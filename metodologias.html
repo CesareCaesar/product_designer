@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologías Completas para Product Designers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Active navigation link style */
+        .sidebar-link.active {
+            background-color: #e0f2fe; /* light-blue-100 */
+            color: #0c4a6e; /* cyan-800 */
+            font-weight: 600;
+        }
+        /* Smooth scroll offset */
+        html {
+             scroll-padding-top: 5rem; /* Adjust based on mobile header height */
+        }
+        section, article[id] { /* Target sections and articles with IDs */
+            scroll-margin-top: 5rem; /* Adjust based on mobile header height */
+        }
+        /* Mobile menu transition */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Fixed sidebar on desktop */
+        @media (min-width: 1024px) { /* lg breakpoint */
+            #sidebar {
+                height: 100vh;
+            }
+            #sidebar table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #e5e7eb; /* gray-200 */
+            padding: 0.75rem; /* p-3 */
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f3f4f6; /* gray-100 */
+            font-weight: 600;
+            font-size: 0.75rem; /* text-xs */
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* tracking-wider */
+            color: #4b5563; /* gray-600 */
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9fafb; /* gray-50 */
+        }
+        tbody td {
+             font-size: 0.875rem; /* text-sm */
+        }
+        /* Responsive table container */
+        .table-container {
+            overflow-x: auto;
+            background-color: white;
+            padding: 1rem; /* p-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        /* Sub-list styling */
+        ul ul, ol ul, ul ol, ol ol {
+            margin-left: 1.5rem; /* Indent nested lists */
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        li > ul, li > ol {
+            margin-top: 0.25rem;
+        }
+        /* Styling for articles within sections */
+        article {
+            margin-bottom: 2rem; /* mb-8 */
+            padding-bottom: 1.5rem; /* pb-6 */
+            border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+        }
+         article:last-child {
+             border-bottom: none;
+             margin-bottom: 0;
+             padding-bottom: 0;
+         }
+         /* Specific styling for sub-headings within articles */
+        article h4 {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #374151; /* text-gray-700 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="flex flex-col lg:flex-row min-h-screen">
+
+        <header class="lg:hidden sticky top-0 z-30 bg-white shadow-md p-4 flex justify-between items-center h-16">
+            <h1 class="text-lg font-bold text-cyan-700 truncate">Metodologías de Diseño</h1>
+            <button id="menu-button" class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </header>
+
+        <aside id="sidebar" class="fixed top-0 left-0 z-40 h-screen w-72 bg-white shadow-lg p-6 overflow-y-auto transition-transform duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 lg:shadow-none lg:flex-shrink-0 lg:fixed lg:top-0 lg:left-0"> 
+             <button id="close-menu-button" class="lg:hidden absolute top-4 right-4 text-gray-600 hover:text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-xl font-bold text-cyan-700 mb-6 hidden lg:block">Metodologías Diseño</h2>
+            <nav>
+                
+                <ul class="space-y-1 text-sm" id="nav-links">
+                    <li><a href="#introduccion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">Introducción</a></li>
+                    <li>
+                        <a href="#contexto-estrategia" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">I. Contexto y Estrategia</a>
+                        <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#descubrimiento-usuario" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Descubrimiento Usuarios</a></li>
+                            <li><a href="#alineacion-estrategica" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Alineación Estratégica</a></li>
+                            <li><a href="#diseno-etico" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Diseño Ético</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#marcos-proceso" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">II. Marcos de Proceso</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#marcos-usuario" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Centrados Usuario</a></li>
+                            <li><a href="#marcos-agil" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Eficiencia/Agilidad</a></li>
+                            <li><a href="#marcos-secuencial" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Secuenciales</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#metodologias-ejecucion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">III. Metodologías Ejecución</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#ideacion" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Ideación</a></li>
+                            <li><a href="#prototipado-validacion" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Prototipado/Validación</a></li>
+                            <li><a href="#diseno-ui-ixd" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Diseño UI/IxD</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#integracion-colaboracion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">IV. Integración/Colaboración</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#colab-interfuncional" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Unión Diseño/Dev/Prod</a></li>
+                            <li><a href="#factibilidad-tecnica" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Factibilidad Técnica</a></li>
+                            <li><a href="#designops" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. DesignOps</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#metodologias-especializadas" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">V. Especializadas/Emergentes</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#diseno-conductual" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Diseño Conductual</a></li>
+                            <li><a href="#diseno-participativo" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Diseño Participativo</a></li>
+                            <li><a href="#diseno-critico" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Diseño Crítico/Especulativo</a></li>
+                             <li><a href="#contexto-especifico" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">D. Específicas Contexto</a></li>
+                             <li><a href="#academia" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">E. Perspectivas Academia</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#medicion-mejora" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">VI. Medición y Mejora</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#medicion-impacto" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Cuantificando Impacto</a></li>
+                            <li><a href="#aprendizaje-adaptacion" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Aprendizaje/Adaptación</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conclusion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">Conclusión</a></li>
+                </br><b><a href="index.html" class="menu-link">Regresar</a></b>
+                </ul>
+            </nav>
+        </aside>
+
+        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
+        <main class="flex-1 p-6 md:p-10 lg:p-12 lg:ml-72 overflow-y-auto">
+            <div class="max-w-4xl mx-auto">
+
+                <section id="introduccion" class="mb-16">
+                    <h1 class="text-4xl font-bold text-cyan-800 mb-6">El Espectro Completo de Metodologías para el Diseño de Productos End-to-End</h1>
+                    <p class="mb-4 text-lg text-gray-600">El diseño de productos digitales exitosos exige un enfoque metódico y holístico, navegando necesidades de usuario, viabilidad técnica y objetivos de negocio.</p>
+                    <p class="mb-4">Este informe compila exhaustivamente las metodologías que un diseñador puede emplear en todo el ciclo de vida del producto, desde la concepción hasta la medición post-lanzamiento.</p>
+                     <p class="mb-4">El propósito es ser una guía de referencia estructurada, incluyendo metodologías para ejecución, evaluación de factibilidad y alineación con objetivos comerciales.</p>
+                     <p class="mb-4">Abarca fases clave: Comprensión Contexto/Estrategia, Marcos Proceso, Ejecución, Integración/Colaboración, Enfoques Especializados/Emergentes, Medición/Mejora.</p>
+                     <p>Un enfoque metodológico proporciona estructura, fomenta colaboración y aumenta probabilidad de éxito. Ayuda a navegar la complejidad (regulaciones, restricciones, stakeholders).</p>
+                </section>
+
+                <section id="contexto-estrategia" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">I. Metodologías Fundamentales: Comprensión del Contexto y la Estrategia</h2>
+                    <p class="mb-8">Establecer una base sólida de comprensión antes del diseño tangible.</p>
+
+                    <article id="descubrimiento-usuario">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Descubrimiento de Usuarios y Problemas</h3>
+                        <p class="mb-4">Obtener comprensión profunda del usuario, contexto y problemas centrales.</p>
+                        <h4>Técnicas de Investigación de Usuarios:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><strong>Entrevistas:</strong> Exploración profunda motivaciones/experiencias.</li>
+                            <li><strong>Encuestas:</strong> Datos cuantitativos/cualitativos muestra amplia.</li>
+                            <li><strong>Estudios Etnográficos/Contextuales:</strong> Observar usuarios en entorno natural.</li>
+                            <li><strong>Personas:</strong> Representaciones ficticias usuarios arquetípicos.</li>
+                            <li><strong>Mapas Viaje Cliente:</strong> Visualización experiencia usuario.</li>
+                        </ul>
+                        <p class="text-sm mb-4">Fundamentales para 'Empatizar'/'Definir' (Design Thinking). Construyen empatía y comprensión compartida del 'Por qué'.</p>
+
+                        <h4>Encuadre y Definición del Problema:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Articular claramente espacio problema.</li>
+                            <li><strong>"How Might We" (HMW):</strong> Reformular desafíos como oportunidades.</li>
+                            <li><strong>Declaraciones de Problema:</strong> Enfocar esfuerzos equipo.</li>
+                            <li>Identificar desafíos centrales y "Jobs-to-be-Done".</li>
+                        </ul>
+
+                        <h4>Investigación de Mercado y Competencia:</h4>
+                        <p class="text-sm mb-4">Comprender panorama mercado, analizar competencia, identificar oportunidades/brechas. Informa posicionamiento y diferenciación.</p>
+
+                        <h4>Identificación de Restricciones:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li>Identificación temprana (usuario, técnicas, comerciales/proyecto).</li>
+                             <li>Restricciones como catalizadores creatividad.</li>
+                             <li>Marcos como Teoría Restricciones (TOC) para gestión sistemática.</li>
+                         </ul>
+                    </article>
+
+                    <article id="alineacion-estrategica">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Alineación Estratégica</h3>
+                        <p class="mb-4">Asegurar que diseño apoye e integre objetivos comerciales.</p>
+                        <h4>Integración Modelo Negocio (ej. Business Model Canvas - BMC):</h4>
+                        <p class="text-sm mb-4">Lenguaje visual compartido para mapear cómo producto crea/entrega/captura valor (Segmentos Clientes, Propuestas Valor, Canales, etc.). Decisiones diseño informadas refuerzan modelo.</p>
+
+                        <h4>Marcos Establecimiento Metas (ej. OKRs, Balanced Scorecard, KPIs):</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Definir objetivos medibles conectando diseño y resultados negocio.</li>
+                            <li>OKRs vinculan metas empresa con equipo/tareas.</li>
+                            <li>Alinear métricas diseño con KPIs negocio.</li>
+                            <li>OKRs centrados cliente (cambios comportamiento usuario) impulsan resultados negocio.</li>
+                         </ul>
+
+                        <h4>Diseño de Propuestas de Valor:</h4>
+                        <p class="text-sm mb-4">Metodologías para articular/validar valor único para segmentos cliente (entender Jobs-to-be-Done, abordar puntos dolor, ofrecer ganancias).</p>
+
+                        <h4>Alineación Hojas Ruta (Roadmaps):</h4>
+                         <p class="text-sm mb-4">Integrar deuda técnica, mejoras UX, nuevas features. Requiere colaboración interfuncional. Roadmaps conectados visualizan contribución tareas a objetivos.</p>
+
+                        <h4>El Diseño como Estrategia:</h4>
+                        <p class="text-sm mb-4">Design Thinking como enfoque estratégico resolución problemas (comprender situación, identificar problema principal).</p>
+                        <p class="text-sm italic">Alineación estratégica es proceso continuo. OKRs como guías adaptables. Planificación continua y ligera, tratando planes como hipótesis. Estrategia como viaje, requiere adaptación.</p>
+                    </article>
+
+                    <article id="diseno-etico">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Marcos de Diseño Ético y Responsable</h3>
+                        <p class="mb-4">Considerar proactivamente implicaciones éticas es no negociable.</p>
+                        <h4>Principios Éticos Fundamentales:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Bienestar/Seguridad usuario.</li>
+                            <li>Equidad/Inclusividad (evitar discriminación).</li>
+                            <li>Transparencia/Rendición cuentas.</li>
+                            <li>Privacidad/Protección datos.</li>
+                            <li>Sostenibilidad.</li>
+                            <li>Evitar 'patrones oscuros' (diseño manipulador).</li>
+                         </ul>
+
+                        <h4>Marcos Toma Decisiones Éticas:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Filosóficos: Consecuencialista, Deontológico, Justicia, Bien Común, Virtud.</li>
+                            <li>Tecnología/IT: EDMF, RDM, EGF, TTE (Deloitte), Marco Ética IA Georgia.</li>
+                            <li>Proceso Típico: Reconocer problema, considerar afectados, info relevante, acciones alternativas, decisión, actuar, reflexionar.</li>
+                         </ul>
+
+                         <h4>Privacidad por Diseño:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Integrar privacidad desde inicio (GDPR, CCPA).</li>
+                            <li>Prácticas: Minimización datos, limitación propósito, control usuario.</li>
+                         </ul>
+
+                         <h4>Estándares Accesibilidad (ej. WCAG):</h4>
+                         <p class="text-sm mb-4">Crear productos usables por todos. Técnicas: contraste, tipografía legible, texto alt, compatibilidad lectores pantalla, navegación teclado.</p>
+
+                        <h4>Identificación/Mitigación Sesgos:</h4>
+                        <p class="text-sm mb-4">En algoritmos/IA. Auditorías, pruebas, técnicas equidad.</p>
+
+                        <h4>Principios Innovación Responsable (RI):</h4>
+                        <p class="text-sm mb-4">Para tecnologías emergentes. Dimensiones: Anticipación, Reflexividad, Inclusión, Capacidad Respuesta.</p>
+                        <p class="text-sm italic">Enfoque ético evoluciona: de cumplimiento a componente fundamental confianza/valor marca. Integración proactiva (Privacidad por Diseño, RI) es esencial.</p>
+                    </article>
+                </section>
+
+                 <section id="marcos-proceso" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">II. Marcos de Proceso Centrales: Estructurando el Viaje del Diseño</h2>
+                     <p class="mb-8">Guían viaje diseño concepto-entrega. Definen fases, guían actividades.</p>
+
+                    <article id="marcos-usuario">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Modelos Centrados en el Usuario e Iterativos</h3>
+                        <p class="mb-4">Priorizan comprensión/satisfacción necesidades usuario vía ciclos repetitivos.</p>
+                        <h4>Diseño Centrado Usuario (DCU - UCD):</h4>
+                        <p class="text-sm mb-4">Usuario en centro proceso. Comprensión profunda, participación activa. Bucle: Comprender contexto -> Especificar requisitos -> Diseñar soluciones -> Evaluar diseños.</p>
+
+                        <h4>Design Thinking:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Enfoque iterativo, centrado humano, resolución creativa problemas.</li>
+                            <li>5 Fases (no lineales): Empatizar, Definir, Idear, Prototipar, Probar.</li>
+                            <li>Fortalezas: Fomenta creatividad, soluciones centradas usuario.</li>
+                            <li>Debilidades: Intensivo tiempo/recursos, riesgo perder foco, dependencia percepciones usuario.</li>
+                         </ul>
+
+                        <h4>Doble Diamante (Double Diamond):</h4>
+                        <p class="text-sm mb-4">Modelo visual mapea proceso: Descubrir (divergencia problema) -> Definir (convergencia problema) -> Desarrollar (divergencia solución) -> Entregar (convergencia solución). Estructura pensamiento divergente/convergente.</p>
+
+                        <h4>Marcos Básicos UX (ej. 6 Niveles UX, 5 Elementos UX):</h4>
+                        <p class="text-sm mb-4">Modelos estructurales descomponen UX en capas jerárquicas (Estrategia -> Superficie o Disponibilidad -> Deseabilidad). Forma simple pensar aspectos buena experiencia.</p>
+                    </article>
+
+                    <article id="marcos-agil">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Modelos Enfocados en la Eficiencia y la Agilidad</h3>
+                        <p class="mb-4">Enfatizan velocidad entrega, reducción desperdicio, adaptación rápida.</p>
+                        <h4>Lean UX:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Minimizar desperdicio, maximizar aprendizaje (ciclos construir-medir-aprender).</li>
+                            <li>Principios: Supuestos (vs. requisitos), experimentos ligeros (MVP), medir comportamiento real, aprender/ajustar.</li>
+                            <li>Fortalezas: Velocidad, eficiencia, ahorro costos, mejora continua.</li>
+                            <li>Debilidades: Puede comprometer calidad/profundidad, sofocar creatividad, ignorar otros factores.</li>
+                        </ul>
+
+                        <h4>Agile UX:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Integración prácticas UX en ciclos desarrollo Ágil (Scrum, Kanban).</li>
+                            <li>Actividades UX iterativas/colaborativas dentro sprints.</li>
+                            <li>Énfasis colaboración estrecha, entrega incremental, respuesta cambio.</li>
+                            <li>Beneficios: Flexibilidad, iteraciones rápidas, adaptabilidad, transparencia.</li>
+                            <li>Desafíos: Requiere fuerte colaboración, integrar investigación profunda en sprints cortos.</li>
+                        </ul>
+
+                        <h4>Design Sprints:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Proceso estructurado, plazo definido (ej. 5 días Google Ventures).</li>
+                            <li>Resuelve grandes desafíos rápidamente. Equipo multifuncional.</li>
+                            <li>Fases: Mapeo, Bocetado, Decisión, Prototipado, Prueba.</li>
+                            <li>Enfoque intenso problema específico para aprendizaje validado rápido.</li>
+                        </ul>
+                    </article>
+
+                    <article id="marcos-secuencial">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Modelos Secuenciales</h3>
+                        <p class="mb-4">Menos comunes software moderno, pero importante comprender.</p>
+                        <h4>Waterfall (Cascada):</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Modelo lineal, secuencial (Requisitos -> Diseño -> Implementación -> Pruebas -> Despliegue -> Mantenimiento).</li>
+                            <li>Cada fase completa antes siguiente.</li>
+                            <li>Fortalezas: Estructura clara, predecible, fácil gestión (requisitos estables), documentación exhaustiva.</li>
+                             <li>Debilidades: Inflexible (difícil/costoso volver atrás), pruebas tardías, plazos largos, participación cliente limitada.</li>
+                             <li>Uso: Industrias con predictibilidad/documentación rigurosa (construcción, salud, aeroespacial).</li>
+                         </ul>
+                         <p class="text-sm italic">Elección marco depende contexto. Híbridos comunes. Ágil/Lean dominan digital por gestión incertidumbre/adaptación. Comprender todos modelos permite decisiones informadas.</p>
+
+                        <div class="table-container mt-6">
+                            <h4 class="text-xl font-semibold text-gray-700 mb-3">Tabla Comparativa: Marcos de Proceso Centrales</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Característica</th>
+                                        <th>Design Thinking</th>
+                                        <th>UCD (DCU)</th>
+                                        <th>Lean UX</th>
+                                        <th>Agile UX</th>
+                                        <th>Design Sprints</th>
+                                        <th>Waterfall</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Foco Principal</td><td>Necesidades humanas, Innovación</td><td>Necesidades/contexto usuario</td><td>Eficiencia, Aprendizaje rápido, MVP</td><td>Adaptabilidad, Entrega incremental</td><td>Resolución rápida problemas</td><td>Predictibilidad, Control, Documentación</td></tr>
+                                    <tr><td>Ciclo Iteración</td><td>Iterativo (E-D-I-P-T)</td><td>Iterativo (U-S-D-E)</td><td>Muy rápido (B-M-L)</td><td>Iterativo (Sprints)</td><td>Iterativo (5 días)</td><td>Secuencial (Fase x fase)</td></tr>
+                                    <tr><td>Implicación Usuario</td><td>Alta (Empatía, Pruebas)</td><td>Alta (Investigación, Evaluación)</td><td>Alta (Pruebas rápidas, Feedback)</td><td>Continua (Feedback Sprints)</td><td>Alta (Pruebas final)</td><td>Baja/Media (Inicio/Fin)</td></tr>
+                                    <tr><td>Flexibilidad</td><td>Alta</td><td>Mod-Alta</td><td>Muy Alta</td><td>Muy Alta</td><td>Moderada (sprint)</td><td>Baja</td></tr>
+                                    <tr><td>Artefactos Clave</td><td>Personas, Mapas Viaje, Prototipos</td><td>Personas, Escenarios, Prototipos</td><td>Supuestos, Hipótesis, MVP, Métricas</td><td>Historias Usuario, Backlog, Incremento</td><td>Mapa Problema, Bocetos, Prototipo</td><td>Doc. Requisitos, Especificaciones</td></tr>
+                                    <tr><td>Casos Uso Típicos</td><td>Problemas complejos/ambiguos</td><td>Productos usables</td><td>Startups, Entornos inciertos</td><td>Desarrollo software moderno</td><td>Resolver desafíos específicos</td><td>Proyectos requisitos fijos/estables</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+
+                <section id="metodologias-ejecucion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">III. Metodologías de Ejecución: Ideación, Creación y Validación</h2>
+                    <p class="mb-8">Metodologías específicas para generar ideas, darles forma tangible y validar efectividad.</p>
+
+                    <article id="ideacion">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Generación y Refinamiento de Ideas</h3>
+                         <p class="mb-4">Explorar espacio soluciones, desarrollar conceptos iniciales.</p>
+                        <h4>Variantes Brainstorming:</h4>
+                        <p class="text-sm mb-4">Reverse brainstorming (cómo causar problema), SCAMPER (Sustituir, Combinar, Adaptar...). Parte fase 'Idear' (Design Thinking).</p>
+
+                        <h4>Co-Creación y Talleres Colaborativos:</h4>
+                        <p class="text-sm mb-4">Reunir usuarios/stakeholders/diseñadores en sesiones conjuntas. Generar ideas/soluciones diversas. Talleres Voz/Tono. Vinculado a Diseño Participativo.</p>
+
+                        <h4>Bocetado (Sketching) y Storyboarding:</h4>
+                        <p class="text-sm mb-4">Métodos baja fidelidad visualizar rápido conceptos/flujos/interacciones. Exploración económica, facilita comunicación.</p>
+
+                        <h4>Ideación Basada en Restricciones:</h4>
+                        <p class="text-sm mb-4">Usar limitaciones (tiempo, recursos, técnica) como catalizadores creatividad. Forzar pensar "dentro caja" lleva soluciones enfocadas/innovadoras (ej. Método 3-3-3).</p>
+                    </article>
+
+                    <article id="prototipado-validacion">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Prototipado y Validación de Conceptos</h3>
+                        <p class="mb-4">Crear representaciones tangibles, probar con usuarios, refinar, reducir riesgos.</p>
+                        <h4>Niveles Fidelidad Prototipo:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><strong>Baja Fidelidad:</strong> Bocetos, prototipos papel (explorar conceptos/flujos básicos).</li>
+                            <li><strong>Media Fidelidad:</strong> Wireframes (estructura, diseño, jerarquía, sin detalle visual).</li>
+                            <li><strong>Alta Fidelidad:</strong> Maquetas interactivas (apariencia/interacción similar final, ej. Figma, Protopie).</li>
+                         </ul>
+                         <p class="text-sm mb-4">Permite probar viabilidad técnica, refinar antes desarrollo.</p>
+
+                        <h4>Validación/Prueba Conceptos:</h4>
+                        <p class="text-sm mb-4">Presentar ideas tempranas (dibujos, prototipos papel) a usuarios para feedback inicial. Valida si concepto resuena/aborda necesidad. Cuidado "falsos positivos".</p>
+
+                         <h4>Pruebas Usabilidad:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Observar usuarios completando tareas (prototipo/producto real).</li>
+                            <li>Identificar problemas usabilidad (confusión, flujos ineficientes, errores).</li>
+                            <li>Métodos: Análisis tareas, métricas cuantitativas (Tasa Éxito, Tiempo Tarea, Tasa Errores).</li>
+                            <li>Herramientas: Hotjar, Maze, Lookback.</li>
+                            <li>Beneficio: Involucrar desarrolladores en observación.</li>
+                         </ul>
+
+                        <h4>Pruebas A/B (Experimentación):</h4>
+                        <p class="text-sm mb-4">Técnica cuantitativa comparar 2 versiones (A/B) elemento diseño. Medir cuál funciona mejor para objetivo específico (tasa clics/conversión).</p>
+                    </article>
+
+                    <article id="diseno-ui-ixd">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Enfoques de Diseño de Interfaz de Usuario (UI) e Interacción (IxD)</h3>
+                         <p class="mb-4">Guían estructuración/diseño interfaz. Influyen coherencia, escalabilidad, UX.</p>
+                        <h4>Atomic Design (Diseño Atómico):</h4>
+                        <p class="text-sm mb-4">Descompone UI en bloques jerárquicos: Átomos (HTML básicos) -> Moléculas (grupos simples) -> Organismos (componentes complejos) -> Plantillas (estructuras sin contenido) -> Páginas (instancias con contenido). Facilita sistemas diseño escalables/consistentes.</p>
+
+                        <h4>Object-Oriented UX (OOUX - UX Orientada Objetos):</h4>
+                        <p class="text-sm mb-4">Prioriza definición "objetos" centrales (ej. Oferta, Candidatura). Define atributos/relaciones. Asegura consistencia objeto independientemente dónde aparezca.</p>
+
+                        <h4>Diseño Basado en Componentes:</h4>
+                        <p class="text-sm mb-4">Construir UI ensamblando componentes reutilizables (botones, tarjetas). Encapsulan estructura/estilo/comportamiento. Base Sistemas Diseño. Modularidad, escalabilidad, eficiencia.</p>
+
+                        <h4>Material Design / Human Interface Guidelines (HIG):</h4>
+                        <p class="text-sm mb-4">Aprovechar lenguajes/guías diseño plataformas (Google, Apple). Directrices detalladas (principios, patrones, tipo, color, componentes). Acelera desarrollo, garantiza coherencia.</p>
+
+                        <h4>Arquitectura Información (AI):</h4>
+                        <p class="text-sm mb-4">Estructurar/organizar contenido/funcionalidad para facilitar navegación/búsqueda. Incluye sitemaps, sistemas navegación, taxonomías, etiquetado. Fundamental usabilidad.</p>
+                         <p class="text-sm italic">Prototipado/pruebas son actividades recurrentes impulsan diseño. Elección enfoque UI (Atomic, OOUX) tiene consecuencias técnicas/escalabilidad. Componentes alinean con Sistemas Diseño.</p>
+                    </article>
+                </section>
+
+                 <section id="integracion-colaboracion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">IV. Metodologías de Integración y Colaboración</h2>
+                    <p class="mb-8">Integración efectiva con otras disciplinas (desarrollo) y gestión viabilidad técnica. DesignOps para escalar.</p>
+
+                    <article id="colab-interfuncional">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Uniendo Diseño, Desarrollo y Producto</h3>
+                        <p class="mb-4">Fomentar colaboración fluida y productiva.</p>
+                        <h4>Principios Colaboración Interfuncional:</h4>
+                        <p class="text-sm mb-4">Comunicación abierta/transparente, metas compartidas, comprensión mutua (vocabulario común, respeto), confianza, propiedad compartida éxito.</p>
+
+                        <h4>Implicación Temprana y Continua:</h4>
+                        <p class="text-sm mb-4">Involucrar desarrolladores temprano (identificar restricciones/oportunidades). Involucrar diseñadores en arquitectura técnica. Invitar devs a investigación/pruebas usabilidad.</p>
+
+                        <h4>Estrategias Comunicación:</h4>
+                        <p class="text-sm mb-4">Canales claros, rutinas regulares (stand-ups, retrospectivas, planificación conjunta). Herramientas comunicación/gestión. Tono constructivo.</p>
+
+                        <h4>Mecanismos Retroalimentación:</h4>
+                        <p class="text-sm mb-4">Procesos formales/informales intercambio feedback regular/constructivo. Revisiones diseño conjuntas.</p>
+
+                        <h4>Mejores Prácticas Handoff Diseño:</h4>
+                        <p class="text-sm mb-4">Traspaso diseños a desarrollo. Especificaciones detalladas, anotaciones claras, activos organizados, revisiones conjuntas. Herramientas: Figma, Zeplin, Abstract.</p>
+                    </article>
+
+                    <article id="factibilidad-tecnica">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Garantizando la Factibilidad Técnica</h3>
+                         <p class="mb-4">Abordar restricciones técnicas, asegurar diseños implementables.</p>
+                        <h4>Gestión Restricciones:</h4>
+                        <p class="text-sm mb-4">Identificar, evaluar, diseñar considerando limitaciones técnicas (plataforma, infraestructura, rendimiento, escalabilidad, plazos). Equilibrar innovación/viabilidad.</p>
+
+                        <h4>Prototipado/Iteración Colaborativos:</h4>
+                        <p class="text-sm mb-4">Usar prototipos para evaluación factibilidad técnica temprana por desarrolladores. Feedback permite iterar antes implementación costosa.</p>
+
+                        <h4>Sistemas Diseño (Design Systems):</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Colecciones centralizadas/gobernadas componentes reutilizables, patrones, guías. "Única fuente verdad".</li>
+                            <li>Beneficios: Vocabulario compartido, componentes pre-validados, menos fricción handoff, implementación rápida/consistente, escalabilidad.</li>
+                            <li>Componentes Típicos: Bibliotecas Componentes, Bibliotecas Patrones, Guías Estilo.</li>
+                        </ul>
+
+                        <h4>Revisiones Código Colaborativas:</h4>
+                        <p class="text-sm mb-4">Incluir diseñadores en revisiones código asegura coincidencia implementación/intención. Ayuda entender decisiones técnicas, identificar problemas.</p>
+
+                        <h4>Evaluaciones Factibilidad Técnica:</h4>
+                        <p class="text-sm mb-4">Desarrolladores evalúan complejidad implementación, impacto rendimiento, compatibilidad, obstáculos. Feedback temprano guía diseño.</p>
+                    </article>
+
+                    <article id="designops">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Escalando el Diseño: Operaciones de Diseño (DesignOps)</h3>
+                        <p class="mb-4">Disciplina para optimizar/gestionar procesos, herramientas, personas diseño a escala.</p>
+                        <h4>Componentes Centrales (Personas, Procesos, Herramientas):</h4>
+                        <p class="text-sm mb-4">Organización equipos, cómo hacen trabajo, infraestructura utilizada.</p>
+
+                        <h4>Optimización Flujo Trabajo:</h4>
+                        <p class="text-sm mb-4">Simplificar/estandarizar procesos (eficientes, repetibles, escalables). Definir roles, gestionar handoffs, eliminar cuellos botella, asegurar coherencia.</p>
+
+                        <h4>Gestión Herramientas/Infraestructura:</h4>
+                        <p class="text-sm mb-4">Seleccionar, implementar, gestionar, mantener conjunto herramientas (diseño, prototipado, investigación, colaboración, gestión proyectos, documentación, sistemas diseño). Integración efectiva.</p>
+
+                        <h4>Gobernanza Sistema Diseño:</h4>
+                        <p class="text-sm mb-4">Mantenimiento/evolución continuos. Procesos gobernanza: solicitar/retirar patrones/componentes, aprobar cambios, actualizar documentación, comunicar/desplegar cambios.</p>
+
+                        <h4>Gestión/Crecimiento Equipo:</h4>
+                        <p class="text-sm mb-4">Onboarding, trayectorias profesionales, cultura colaborativa, gestión presupuesto, defensa valor diseño.</p>
+
+                        <h4>Medición Impacto DesignOps:</h4>
+                        <p class="text-sm mb-4">Demostrar valor: ganancias eficiencia, mejoras consistencia, tiempos entrega rápidos, satisfacción equipo.</p>
+                         <p class="text-sm italic">Colaboración/Factibilidad técnica fundamentales. DesignOps sistematiza/optimiza/sostiene estas prácticas a escala. Sistemas Diseño herramienta clave (creados/gestionados por DesignOps). Sin DesignOps, equipos grandes arriesgan inconsistencia/ineficiencia.</p>
+
+                        <div class="table-container mt-6">
+                             <h4 class="text-xl font-semibold text-gray-700 mb-3">Herramientas Comunes de Colaboración</h4>
+                             <table>
+                                <thead>
+                                    <tr><th>Categoría</th><th>Ejemplos</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Documentación</td><td>Confluence, Notion, GitBook, Google Docs</td></tr>
+                                    <tr><td>Gestión Proyectos</td><td>JIRA, Asana, Trello, Monday</td></tr>
+                                    <tr><td>Comunicación</td><td>Slack, Microsoft Teams</td></tr>
+                                    <tr><td>Revisión Código/Diseño</td><td>GitHub, GitLab, Abstract</td></tr>
+                                    <tr><td>Diseño/Prototipado</td><td>Figma, Protopie</td></tr>
+                                    <tr><td>Handoff</td><td>Figma, Zeplin</td></tr>
+                                    <tr><td>Reuniones Video</td><td>Zoom, Teams, Google Meet</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+
+                 <section id="metodologias-especializadas" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">V. Metodologías Especializadas y Emergentes</h2>
+                    <p class="mb-8">Enfoques que abordan aspectos específicos o representan nuevas formas pensar.</p>
+
+                    <article id="diseno-conductual">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Influenciando la Acción del Usuario (Diseño Conductual)</h3>
+                        <p class="mb-4">Aplica psicología/ciencia comportamiento para diseñar productos/experiencias que influyan acciones.</p>
+                         <h4>Concepto Central:</h4>
+                         <p class="text-sm mb-4">Comprender cómo humanos piensan/sienten/deciden (sesgos, motivaciones, hábitos, heurísticas) para guiar comportamiento predecible. Fusión psicología/diseño.</p>
+                         <h4>Modelos Conductuales:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><strong>Fogg (B=MAP/MAT):</strong> Comportamiento = Motivación + Habilidad + Prompt/Trigger.</li>
+                             <li><strong>COM-B:</strong> Comportamiento = Capacidad + Oportunidad + Motivación. Marco más detallado.</li>
+                             <li><strong>Hooked (Nir Eyal):</strong> Ciclo 4 pasos formar hábitos (Gatillo -> Acción -> Recompensa Variable -> Inversión).</li>
+                             <li><strong>ABC:</strong> Antecedente -> Comportamiento -> Consecuencia. Destaca refuerzo.</li>
+                         </ul>
+                         <h4>Técnicas Diseño Conductual:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4 grid grid-cols-1 sm:grid-cols-2">
+                            <li>Nudges (Empujones)</li>
+                            <li>Arquitectura Elección</li>
+                            <li>Defaults (Valores Predeterminados)</li>
+                            <li>Bucles Retroalimentación</li>
+                            <li>Gamificación</li>
+                            <li>Prueba Social</li>
+                            <li>Aversión a Pérdida</li>
+                            <li>Personalización</li>
+                            <li>Escasez / Urgencia</li>
+                            <li>Cues (Señales)</li>
+                         </ul>
+                         <h4>Áreas Aplicación:</h4>
+                         <p class="text-sm mb-4">Salud/Bienestar, Servicios Financieros, E-commerce/Marketing, Sostenibilidad, Educación, Políticas Públicas.</p>
+                         <h4>Consideraciones Éticas:</h4>
+                         <p class="text-sm mb-4">Primordiales. Priorizar transparencia, bienestar usuario, consentimiento, evitar manipulación. Ayudar usuarios alcanzar sus objetivos. Modelo EAST (Easy, Attractive, Social, Timely).</p>
+                         <p class="text-sm italic">Requiere comprensión profunda modelos psicológicos y brújula ética. Aplicación superficial puede ser ineficaz/perjudicial.</p>
+                    </article>
+
+                    <article id="diseno-participativo">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Diseñando con los Usuarios (Diseño Participativo y Co-Diseño)</h3>
+                         <p class="mb-4">Involucra usuarios/stakeholders como socios activos en proceso diseño.</p>
+                         <h4>Concepto Central:</h4>
+                         <p class="text-sm mb-4">Enfoque colaborativo. Aprovechar conocimiento experiencial/perspectivas únicas para crear soluciones mejor adaptadas/integradas.</p>
+                         <h4>Principios Clave:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Inclusión (diversidad participantes).</li>
+                            <li>Colaboración (actividades conjuntas).</li>
+                            <li>Empoderamiento (influencia real, sentido propiedad).</li>
+                            <li>Iteración (ciclos diseño/feedback/refinamiento).</li>
+                            <li>Comprensión Contextual (escucha activa).</li>
+                            <li>Defensa Usuario (espacio seguro/igualitario).</li>
+                         </ul>
+                         <h4>Distinción DCU/Investigación Usuarios:</h4>
+                         <p class="text-sm mb-4">DP va más allá: involucra usuarios en acto generar/dar forma soluciones. Usuarios como co-creadores.</p>
+                         <h4>Técnicas:</h4>
+                         <p class="text-sm mb-4">Talleres co-diseño, entrevistas stakeholders, matrices priorización, card sorting, prototipado colaborativo, sesiones feedback estructuradas, encuestas diseño.</p>
+                         <h4>Beneficios:</h4>
+                         <p class="text-sm mb-4">Mayor satisfacción usuario, compromiso/propiedad, reducción retrabajo, soluciones innovadoras, mayor aceptación stakeholders.</p>
+                         <h4>Desafíos:</h4>
+                         <p class="text-sm mb-4">Inversión tiempo/esfuerzo, proceso menos definido, gestionar dinámicas grupo, empoderamiento genuino, requiere facilitación experta.</p>
+                         <p class="text-sm italic">Transforma relación diseñador-usuario (diseñar *con* vs. *para*). Éxito depende planificación, facilitación, compromiso organización.</p>
+                    </article>
+
+                    <article id="diseno-critico">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Desafiando Normas y Explorando Futuros (Diseño Crítico y Especulativo)</h3>
+                         <p class="mb-4">Usan diseño para provocar pensamiento, cuestionar status quo, explorar implicaciones futuros posibles.</p>
+                        <h4>Diseño Crítico:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Usa propuestas diseño (especulativas/ficticias) para desafiar suposiciones sobre rol objetos/tecnología.</li>
+                            <li>Más actitud/posición crítica que método. Opuesto a "diseño afirmativo".</li>
+                            <li>Objetivo: Hacernos pensar, crear conciencia, exponer suposiciones, provocar acción/debate.</li>
+                            <li>Emplea humor (sátira) para crear dilema espectador (serio/no, real/no).</li>
+                            <li>Foco implicaciones sociales/culturales/éticas. Informa Innovación Responsable.</li>
+                         </ul>
+
+                        <h4>Diseño Especulativo:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Explora futuros posibles/probables/preferibles (derivados tecnología emergente, tendencias sociales, problemas ambientales).</li>
+                            <li>Pregunta central: "¿Qué pasaría si...?".</li>
+                            <li>Métodos: Construcción escenarios, artefactos futuro, storytelling.</li>
+                            <li>Propósito: No predecir, sino explorar posibilidades para informar toma decisiones estratégicas/éticas hoy. Identificar disrupciones, mitigar riesgos, generar oportunidades.</li>
+                            <li>Solapamiento con Diseño Crítico.</li>
+                         </ul>
+
+                        <h4>Design Fiction (Ficción Diseño):</h4>
+                        <p class="text-sm mb-4">Creación prototipos diegéticos (objetos/interfaces en mundo narrativo) o historias presentan futuros especulativos como realidades mundanas para explorar implicaciones.</p>
+                         <p class="text-sm italic">Operan límites diseño tradicional. Foco "descubrimiento problemas" y exploración prospectiva. No siempre resultan productos comercializables, pero función estratégica importante (informan visión largo plazo, fomentan innovación radical, enriquecen consideraciones éticas).</p>
+                    </article>
+
+                     <article id="contexto-especifico">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">D. Consideraciones Específicas del Contexto</h3>
+                         <p class="mb-4">Aplicación metodologías debe adaptarse a restricciones/regulaciones/usuarios cada industria.</p>
+                        <h4>UX en Salud (Healthcare UX):</h4>
+                        <p class="text-sm mb-4">Desafíos: Diversidad usuarios (pacientes, médicos), regulaciones estrictas (HIPAA), sistemas fragmentados, flujos complejos, necesidad accesibilidad crítica, sensibilidad emocional. Priorizar claridad, seguridad, cumplimiento, accesibilidad, empatía.</p>
+
+                        <h4>UX en Fintech (Fintech UX):</h4>
+                        <p class="text-sm mb-4">Desafíos: Equilibrar seguridad/confianza con fluidez UX, cumplimiento regulaciones complejas (AML, KYC, GDPR, PSD3), gestión datos complejos, educación financiera usuarios, accesibilidad. Enfocarse en confianza (seguridad, transparencia), simplificar procesos, personalización, "diseño impulsado por cumplimiento".</p>
+
+                        <h4>UX en Videojuegos (Game UX):</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Foco: Engagement, inmersión, flow, motivación, sistemas recompensa.</li>
+                            <li>Principios: Claridad interfaz/info, accesibilidad, bucles feedback claros, onboarding efectivo, consistencia controles/visual.</li>
+                            <li>Técnicas: Adaptación interfaz género, simplicidad, tipografía/contraste, navegación intuitiva, tutoriales integrados, gamificación.</li>
+                            <li>Apoyo fuerte psicología cognitiva (motivación, emoción, dinámica social).</li>
+                         </ul>
+                         <p class="text-sm italic">Principios DCU universales, pero industrias (salud, fintech) imponen restricciones (regulatorias, seguridad, éticas) que influyen metodología/prioridades. Game UX ofrece lecciones diseño conductual.</p>
+                    </article>
+
+                    <article id="academia">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">E. Perspectivas desde la Academia (Conceptos Emergentes)</h3>
+                        <p class="mb-4">Investigación académica (HCI, CSCW, Estudios Diseño) genera nuevos conceptos/enfoques.</p>
+                        <h4>Diseño Emergente:</h4>
+                        <p class="text-sm mb-4">Enfoque evolutivo/reflexivo resolver problemas multi-dimensionales/disciplinarios. Planes/herramientas emergen gradualmente reflexión participantes. Énfasis calidad colaboración/aprendizaje práctico.</p>
+
+                        <h4>Computación Basada Práctica / Estudios Caso Diseño (CSCW):</h4>
+                        <p class="text-sm mb-4">Comprender prácticas sociales/laborales (análisis empíricos detallados). Diseñar intervenciones tecnológicas, estudiar apropiación/efecto transformador. Énfasis interacciones micronivel, relación tecnología/práctica social.</p>
+
+                        <h4>Enfoque CSCW:</h4>
+                        <p class="text-sm mb-4">Diseño/uso/evaluación tecnologías apoyan/afectan prácticas sociales/colaborativas. Investiga redes sociales, crowdsourcing, colaboración remota, ética sistemas sociotécnicos.</p>
+
+                        <h4>Investigación Tendencias Futuras:</h4>
+                        <p class="text-sm mb-4">IA en diseño/productos, sostenibilidad/diseño circular, tecnologías inmersivas (AR/VR), minimalismo, diseño biofílico, diseño emocional, accesibilidad/inclusión, personalización.</p>
+                        <p class="text-sm italic">Investigación académica (CSCW, DRS) profundiza complejidades colaboración, integración tecnología, marcos conceptuales novedosos. Ofrece conocimientos/enfoques valiosos para diseñadores prácticos (desafíos complejos, sistemas sociotécnicos, colaboración efectiva).</p>
+                    </article>
+                </section>
+
+                 <section id="medicion-mejora" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">VI. Metodologías de Medición y Mejora Continua</h2>
+                    <p class="mb-8">Ciclo diseño no termina con lanzamiento. Medir impacto, usar aprendizajes para mejora.</p>
+
+                    <article id="medicion-impacto">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Cuantificando el Impacto del Diseño</h3>
+                        <p class="mb-4">Medir efectos diseño en UX y resultados negocio.</p>
+                        <h4>Definición Métricas Éxito:</h4>
+                        <p class="text-sm mb-4">Definir cómo medir éxito desde inicio. Alinear métricas diseño con objetivos negocio (KPIs) y necesidades usuario. Diferenciar cuantitativas/cualitativas.</p>
+
+                        <h4>Métricas UX (Enfocadas Usuario):</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><strong>Conductuales (Qué hacen):</strong> Tasa Éxito Tareas, Tiempo Tarea, Tasa Errores, Clics, Scroll, Duración Sesión, Frecuencia uso.</li>
+                            <li><strong>Actitudinales (Qué dicen/sienten):</strong> SUS, CSAT, NPS, CES, Feedback Cualitativo.</li>
+                        </ul>
+
+                        <h4>Métricas Negocio (Enfocadas Negocio):</h4>
+                        <p class="text-sm mb-4">Tasas Conversión, Tasas Engagement, Ingresos, Tasa Retención, Tasa Abandono (Churn), CLV, Costo Servir, ROX (Retorno Experiencia).</p>
+
+                        <h4>Medición a Través Horizontes (Cercano, Medio, Distante):</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><strong>Cercano:</strong> Impactos inmediatos usabilidad/satisfacción (Tasa Éxito, CSAT).</li>
+                            <li><strong>Medio:</strong> Calidad colaboración, validación hipótesis (Tasa Éxito Experimentos, CES).</li>
+                            <li><strong>Distante:</strong> Efectos largo plazo negocio (Retención, CLV, ROX).</li>
+                        </ul>
+
+                        <h4>Aislamiento Impacto Diseño:</h4>
+                        <p class="text-sm mb-4">Difícil atribuir cambios métricas solo a diseño. Pruebas A/B controladas, lanzamientos fases ayudan aislar impacto. Desglosar proyectos grandes en mini-proyectos medibles.</p>
+
+                         <div class="table-container mt-6">
+                             <h4 class="text-xl font-semibold text-gray-700 mb-3">Tabla Resumen: Métricas Clave Impacto Diseño</h4>
+                             <table>
+                                <thead>
+                                    <tr><th>Horizonte</th><th>Tipo</th><th>Métrica Clave</th><th>Definición Breve</th><th>Cadencia Típica</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td rowspan="6">Cercano</td><td rowspan="3">UX Actitudinal</td><td>CSAT</td><td>Satisfacción interacción específica</td><td>Post-evento</td></tr>
+                                    <tr><td>NPS</td><td>Probabilidad recomendar</td><td>Mensual/Trimestral</td></tr>
+                                    <tr><td>SUS</td><td>Puntuación usabilidad percibida</td><td>Trimestral</td></tr>
+                                    <tr><td rowspan="3">UX Conductual</td><td>Tasa Éxito Tareas</td><td>% usuarios completan tarea</td><td>Bi-Semanal/Mensual</td></tr>
+                                    <tr><td>Tiempo en Tarea</td><td>Tiempo completar tarea</td><td>Bi-Semanal/Mensual</td></tr>
+                                    <tr><td>Tasa Errores</td><td>Frecuencia errores usuario</td><td>Bi-Semanal/Mensual</td></tr>
+                                     <tr><td rowspan="3">Medio</td><td>UX Actitudinal</td><td>CES</td><td>Facilidad percibida lograr objetivo</td><td>Post-encuesta</td></tr>
+                                     <tr><td>Calidad Colab.</td><td>Feedback Interfuncional</td><td>Feedback efectividad colaboración</td><td>Trimestral</td></tr>
+                                     <tr><td>UX Conductual</td><td>Tasa Éxito Exp./Hip.</td><td>% hipótesis diseño validadas</td><td>Trimestral</td></tr>
+                                     <tr><td rowspan="5">Distante</td><td rowspan="5">KPI Negocio</td><td>Tasa Conversión</td><td>% usuarios completan acción deseada</td><td>Varía</td></tr>
+                                     <tr><td>Tasa Retención</td><td>% clientes permanecen</td><td>Trimestral</td></tr>
+                                     <tr><td>Tasa Abandono (Churn)</td><td>% clientes dejan usar</td><td>Trimestral</td></tr>
+                                     <tr><td>CLV</td><td>Ingresos totales esperados cliente</td><td>Trimestral/Anual</td></tr>
+                                     <tr><td>ROX</td><td>Vínculo inversión exp./retornos comerc.</td><td>Anual</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article id="aprendizaje-adaptacion">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Aprendizaje y Adaptación</h3>
+                        <p class="mb-4">Medición valiosa si conduce a aprendizaje/mejora.</p>
+                        <h4>Bucles Retroalimentación:</h4>
+                        <p class="text-sm mb-4">Mecanismos sistemáticos recopilar continuamente feedback usuarios (encuestas in-app, entrevistas, pruebas) y stakeholders internos.</p>
+
+                        <h4>Refinamiento Iterativo:</h4>
+                        <p class="text-sm mb-4">Usar datos (cuanti/cuali) y feedback para informar/priorizar mejoras continuas diseño. Principio central Agile/Lean/Design Thinking.</p>
+
+                        <h4>Retrospectivas:</h4>
+                        <p class="text-sm mb-4">Reuniones regulares equipo (Ágil) reflexionar qué funcionó/no, qué mejorar (procesos, colaboración, resultados). Fomentan cultura aprendizaje.</p>
+
+                        <h4>Descubrimiento Continuo (Continuous Discovery):</h4>
+                        <p class="text-sm mb-4">Mentalidad/prácticas tratan planificación/investigación/aprendizaje como actividades continuas. Actualizar regularmente objetivos (OKRs)/roadmaps basado conocimientos adquiridos.</p>
+                        <p class="text-sm italic">Medición efectiva combina métricas UX y KPIs negocio. Marco horizontes útil. Enfocarse en cambios medibles comportamiento usuario. Pruebas A/B cruciales para causalidad.</p>
+                    </article>
+                </section>
+
+                 <section id="conclusion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">Conclusión: Sintetizando el Paisaje Metodológico</h2>
+                    <p class="mb-4">Este informe recorrió amplio espectro metodologías para diseñador productos moderno (comprensión/estrategia -> ejecución -> integración -> especialización -> medición).</p>
+                    <p class="mb-4">Metodologías no operan aisladas; se superponen, complementan, combinan formas híbridas. Selección/aplicación requiere discernimiento, flexibilidad.</p>
+                     <p class="mb-4">Adaptabilidad y aprendizaje continuo (principios Agile, Lean, Continuous Discovery) esenciales para navegar incertidumbre.</p>
+                     <p class="mb-4">Rol diseñador trasciende creación artefactos: facilitador estratégico, integrador perspectivas, navegante complejidad. Conjunto herramientas metodológicas permite equilibrar necesidades usuario, viabilidad técnica, objetivos negocio.</p>
+                     <p>En panorama tecnológico/social evolutivo (IA, sostenibilidad, inmersión), capacidad seleccionar/adaptar/aplicar metodologías eficazmente permitirá crear productos funcionales, deseables, responsables, éticos y valiosos.</p>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- Mobile Menu Logic ---
+        const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const sidebar = document.getElementById('sidebar');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const navLinksContainer = document.getElementById('nav-links');
+        const mainContent = document.querySelector('main');
+
+        function openMenu() {
+            if (!sidebar || !menuOverlay) return;
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            menuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (mainContent) mainContent.style.filter = 'blur(4px)';
+        }
+
+        function closeMenu() {
+             if (!sidebar || !menuOverlay) return;
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            menuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+            if (mainContent) mainContent.style.filter = '';
+        }
+
+        if (menuButton) menuButton.addEventListener('click', openMenu);
+        if (closeMenuButton) closeMenuButton.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        if (navLinksContainer) {
+            navLinksContainer.addEventListener('click', (event) => {
+                 const link = event.target.closest('a');
+                if (link && link.closest('#nav-links')) {
+                    if (window.innerWidth < 1024) {
+                        setTimeout(closeMenu, 50);
+                    }
+                     const targetId = link.getAttribute('href').substring(1);
+                     const targetElement = document.getElementById(targetId);
+                     if (targetElement) {
+                        const headerOffset = (document.querySelector('header.lg\\:hidden')?.offsetHeight || 64) + 16; // Adjusted offset
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                        event.preventDefault();
+                     }
+                }
+            });
+        }
+
+        // --- Active Link Highlighting Logic ---
+        const sections = document.querySelectorAll('main section[id], main article[id]'); // Target sections and articles with IDs
+        const navLinks = document.querySelectorAll('.sidebar-link');
+        const scrollOffsetHighlight = (document.querySelector('header.lg\\:hidden')?.offsetHeight || 64) + 60; // Offset for highlighting
+
+        function changeActiveLink() {
+            let currentElementId = '';
+            const scrollPosition = window.scrollY + scrollOffsetHighlight;
+
+            sections.forEach( element => {
+                if (element && typeof element.offsetTop !== 'undefined') {
+                    if (scrollPosition >= element.offsetTop) {
+                        currentElementId = element.getAttribute('id');
+                    }
+                }
+            });
+
+             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                 const lastSection = sections[sections.length - 1];
+                 if (lastSection) {
+                    currentElementId = lastSection.getAttribute('id');
+                 }
+             }
+
+            navLinks.forEach( link => {
+                link.classList.remove('active');
+                const linkHref = link.getAttribute('href');
+                if (linkHref && linkHref === `#${currentElementId}`) {
+                    link.classList.add('active');
+                }
+                 // Highlight parent link if a sub-link is active
+                 if (link.classList.contains('active') && link.closest('ul ul')) {
+                     const parentLi = link.closest('ul ul').closest('li');
+                     if (parentLi) {
+                         const parentLink = parentLi.querySelector('a.sidebar-link');
+                         if (parentLink && !parentLink.classList.contains('active')) { // Avoid double highlighting parent if it's the target
+                            parentLink.classList.add('active');
+                         }
+                     }
+                 }
+            });
+        }
+
+        if (sections.length > 0 && navLinks.length > 0) {
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) {
+                    window.cancelAnimationFrame(scrollTimeout);
+                }
+                scrollTimeout = window.requestAnimationFrame(changeActiveLink);
+            }, { passive: true });
+            changeActiveLink();
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conocimientos de un Product Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilo para el enlace activo en el menú lateral */
+        .sidebar-link.active {
+            background-color: #e0e7ff; /* indigo-100 */
+            color: #3730a3; /* indigo-800 */
+            font-weight: 600;
+        }
+        /* Estilos para mejorar la legibilidad */
+        section h2 {
+            border-bottom: 2px solid #818cf8; /* indigo-400 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        section h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #4338ca; /* indigo-700 */
+        }
+         section h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #4f46e5; /* indigo-600 */
+            font-weight: 600;
+        }
+         ul {
+            list-style-position: inside;
+         }
+         ul ul {
+             margin-left: 1.5rem;
+             margin-top: 0.5rem;
+             margin-bottom: 0.5rem;
+             list-style-type: circle;
+         }
+        /* Estilos para el menú hamburguesa */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-open {
+            transform: translateX(0);
+        }
+        .menu-closed {
+            transform: translateX(-100%);
+        }
+        /* Ocultar scrollbar en main content para estética, pero permitir scroll */
+        main::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        main {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="flex h-screen overflow-hidden">
+        <aside id="desktop-menu" class="hidden md:flex md:flex-col w-72 bg-white border-r border-gray-200 p-4 overflow-y-auto fixed h-full">
+            <h1 class="text-xl font-bold text-indigo-700 mb-6">Conocimientos P. Designer</h1>
+            <nav class="flex-1 space-y-1 text-sm">
+                <a href="#fase1" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 1: Descubrimiento</a>
+                <a href="#fase2" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 2: Ideación y Diseño</a>
+                <a href="#fase3" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 3: Prototipado y Validación</a>
+                <a href="#fase4" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 4: Implementación y Handoff</a>
+                <a href="#fase5" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 5: Post-Lanzamiento</a>
+                <a href="#habilidades-transversales" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Habilidades Transversales</a>
+                <a href="#metodologias" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Metodologías y Marcos</a>
+                <a href="#herramientas-investigacion" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Investigación</a>
+                <a href="#herramientas-ideacion" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Ideación y Definición</a>
+                <a href="#herramientas-diseno" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Diseño y Prototipado</a>
+                <a href="#herramientas-pruebas" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Prueba y Validación</a>
+                <a href="#herramientas-implementacion" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Implementación</a>
+                <a href="#herramientas-iteracion" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Iteración</a>
+                <a href="#herramientas-estrategia" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Estrategia</a>
+                <a href="#herramientas-colaboracion" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Colaboración</a>
+                <a href="#herramientas-lista" class="sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Lista de Herramientas</a>
+                </br><b><a href="index.html" class="menu-link">Regresar</a></b>
+            </nav>
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="md:hidden bg-white border-b border-gray-200 p-4 flex justify-between items-center sticky top-0 z-10">
+                <h1 class="text-lg font-bold text-indigo-700">Conocimientos P. Designer</h1>
+                <button id="menu-button" class="text-gray-600 hover:text-indigo-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <div id="mobile-menu" class="fixed inset-0 bg-gray-800 bg-opacity-75 z-20 menu-closed md:hidden">
+                <aside class="absolute left-0 top-0 w-72 bg-white h-full p-4 overflow-y-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <h1 class="text-xl font-bold text-indigo-700">Menú</h1>
+                        <button id="close-menu-button" class="text-gray-600 hover:text-indigo-700 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <nav class="flex-1 space-y-1 text-sm">
+                         <a href="#fase1" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 1: Descubrimiento</a>
+                        <a href="#fase2" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 2: Ideación y Diseño</a>
+                        <a href="#fase3" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 3: Prototipado y Validación</a>
+                        <a href="#fase4" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 4: Implementación y Handoff</a>
+                        <a href="#fase5" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Fase 5: Post-Lanzamiento</a>
+                        <a href="#habilidades-transversales" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Habilidades Transversales</a>
+                        <a href="#metodologias" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Metodologías y Marcos</a>
+                        <a href="#herramientas-investigacion" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Investigación</a>
+                        <a href="#herramientas-ideacion" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Ideación y Definición</a>
+                        <a href="#herramientas-diseno" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Diseño y Prototipado</a>
+                        <a href="#herramientas-pruebas" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Prueba y Validación</a>
+                        <a href="#herramientas-implementacion" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Implementación</a>
+                        <a href="#herramientas-iteracion" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Iteración</a>
+                        <a href="#herramientas-estrategia" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Estrategia</a>
+                        <a href="#herramientas-colaboracion" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Htas: Colaboración</a>
+                        <a href="#herramientas-lista" class="mobile-sidebar-link group flex items-center px-3 py-2 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">Lista de Herramientas</a>
+                    </br><b><a href="index.html" class="menu-link">Regresar</a></b>
+                    </nav>
+                </aside>
+            </div>
+
+            <main class="flex-1 overflow-y-auto p-6 md:ml-72">
+                <section id="fase1" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Fase 1: Descubrimiento, Investigación y Estrategia</h2>
+                    <p class="mb-6 text-lg italic leading-relaxed">Entender el Problema y el Contexto</p>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">1. Comprensión del Negocio y Objetivos</h3>
+                    <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Participar en reuniones iniciales con stakeholders (negocio, producto, marketing, ventas, tecnología).</li>
+                        <li>Entender la visión del producto, los objetivos de negocio (KPIs, OKRs) y las métricas de éxito.</li>
+                        <li>Analizar el modelo de negocio y las fuentes de ingresos.</li>
+                        <li>Identificar las restricciones del proyecto (presupuesto, tiempo, tecnología).</li>
+                        <li>Comprender el mercado y el posicionamiento deseado.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">2. Investigación de Usuarios (User Research)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Planificar la investigación: definir objetivos, metodologías y participantes.</li>
+                        <li>Realizar entrevistas con usuarios (actuales o potenciales).</li>
+                        <li>Crear y distribuir encuestas.</li>
+                        <li>Realizar estudios de campo / investigación etnográfica (observar a los usuarios en su contexto).</li>
+                        <li>Analizar datos cuantitativos existentes (analíticas web/app, datos de uso).</li>
+                        <li>Revisar feedback existente (soporte al cliente, reseñas de apps, redes sociales).</li>
+                        <li>Facilitar workshops de descubrimiento con stakeholders y usuarios.</li>
+                        <li>Reclutar participantes para la investigación.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">3. Análisis Competitivo y de Mercado</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Identificar competidores directos e indirectos.</li>
+                        <li>Analizar sus productos: características, flujos, diseño, fortalezas, debilidades (análisis heurístico de la competencia).</li>
+                        <li>Investigar tendencias de diseño, tecnología y comportamiento del usuario en el sector.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">4. Auditoría de Producto Existente (si aplica)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Realizar una evaluación heurística del producto actual.</li>
+                        <li>Analizar el rendimiento actual (métricas, feedback).</li>
+                        <li>Identificar puntos débiles y oportunidades de mejora.</li>
+                        <li>Revisar la arquitectura de información y flujos existentes.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">5. Síntesis y Definición</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Analizar y sintetizar los hallazgos de la investigación (ej. usando mapas de afinidad).</li>
+                        <li>Crear User Personas o Arquetipos que representen a los usuarios clave.</li>
+                        <li>Desarrollar Mapas de Empatía.</li>
+                        <li>Mapear el User Journey (viaje del usuario) actual y/o deseado.</li>
+                        <li>Identificar puntos de dolor (pain points) y necesidades no cubiertas.</li>
+                        <li>Definir los "Jobs to be Done" (JTBD) del usuario.</li>
+                        <li>Articular la propuesta de valor del producto/funcionalidad.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">6. Alineación Estratégica</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Colaborar con Product Managers para definir o refinar la estrategia del producto.</li>
+                        <li>Ayudar a priorizar funcionalidades (ej. usando técnicas como MOSCOW, Kano Model).</li>
+                        <li>Definir el alcance inicial (MVP - Producto Mínimo Viable).</li>
+                        <li>Establecer principios de diseño específicos para el proyecto.</li>
+                        <li>Definir métricas de éxito específicas para el diseño (ej. tasa de finalización de tareas, satisfacción del usuario).</li>
+                    </ul>
+                </section>
+
+                <section id="fase2" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Fase 2: Ideación y Diseño</h2>
+                     <p class="mb-6 text-lg italic leading-relaxed">Generar y Dar Forma a las Soluciones</p>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">7. Generación de Ideas (Ideación)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Facilitar sesiones de brainstorming (ej. Crazy 8's, SCAMPER) con el equipo (diseñadores, desarrolladores, PMs, etc.).</li>
+                        <li>Explorar múltiples enfoques y conceptos de solución.</li>
+                        <li>Realizar bocetos rápidos (sketching) de ideas iniciales.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">8. Diseño de Flujos y Arquitectura</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Crear diagramas de flujo de usuario (User Flows) o flujos de tareas (Task Flows) detallados.</li>
+                        <li>Diseñar la Arquitectura de Información (AI): sitemaps, estructuras de navegación.</li>
+                        <li>Definir cómo el usuario se moverá a través del producto para completar tareas.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">9. Wireframing</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Crear wireframes de baja fidelidad (estructuras básicas, layout, contenido principal) para explorar y validar conceptos rápidamente.</li>
+                        <li>Crear wireframes de alta fidelidad (más detallados, listos para añadir el diseño visual).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">10. Diseño de Interacción (IxD)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Definir cómo funcionan los elementos interactivos (botones, menús, formularios).</li>
+                        <li>Diseñar microinteracciones y animaciones que mejoren la usabilidad y la experiencia.</li>
+                        <li>Considerar estados de los elementos (hover, focused, active, disabled).</li>
+                        <li>Diseñar para diferentes entradas (táctil, ratón, teclado, voz).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">11. Diseño Visual (UI Design)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Establecer o aplicar la identidad visual (colores, tipografía, iconografía).</li>
+                        <li>Crear mockups de alta fidelidad (representación visual final de las pantallas).</li>
+                        <li>Diseñar los componentes de la interfaz de usuario (botones, campos de texto, tarjetas, etc.).</li>
+                        <li>Asegurar la consistencia visual en todo el producto.</li>
+                        <li>Diseñar para diferentes tamaños de pantalla y plataformas (diseño responsivo/adaptativo).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">12. Diseño de Contenido</h3>
+                     <p class="text-sm italic text-gray-600 mb-2">(a veces en colaboración con Content Designers/UX Writers)</p>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Definir la terminología y el tono de voz.</li>
+                        <li>Escribir o refinar el microcopy (textos en botones, mensajes de error, tooltips).</li>
+                        <li>Estructurar la información y el contenido en las pantallas.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">13. Diseño de Sistemas (Design Systems)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Crear y/o mantener un sistema de diseño: biblioteca de componentes reutilizables, guías de estilo, principios de diseño, patrones de interacción.</li>
+                        <li>Documentar el sistema de diseño para su uso por otros diseñadores y desarrolladores.</li>
+                        <li>Asegurar la coherencia y eficiencia en el diseño y desarrollo.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">14. Accesibilidad</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Diseñar siguiendo las pautas de accesibilidad (ej. WCAG).</li>
+                        <li>Considerar el contraste de color, el tamaño del texto, la navegación por teclado, el soporte para lectores de pantalla, etc.</li>
+                        <li>Realizar auditorías de accesibilidad básicas.</li>
+                    </ul>
+                </section>
+
+                <section id="fase3" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Fase 3: Prototipado y Validación</h2>
+                     <p class="mb-6 text-lg italic leading-relaxed">Probar y Refinar las Soluciones</p>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">15. Creación de Prototipos</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Construir prototipos interactivos (de baja a alta fidelidad) para simular la experiencia del usuario.</li>
+                        <li>Utilizar herramientas de prototipado (Figma, Sketch, InVision, Axure, etc.).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">16. Planificación de Pruebas</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Definir los objetivos de las pruebas de usabilidad.</li>
+                        <li>Escribir escenarios de tareas y guiones de prueba.</li>
+                        <li>Reclutar participantes adecuados para las pruebas.</li>
+                        <li>Preparar el entorno y los materiales de prueba.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">17. Ejecución de Pruebas con Usuarios</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Realizar pruebas de usabilidad moderadas o no moderadas.</li>
+                        <li>Conducir tests A/B o multivariante sobre variaciones de diseño.</li>
+                        <li>Realizar pruebas de preferencia.</li>
+                        <li>Utilizar técnicas como Card Sorting o Tree Testing para validar la Arquitectura de Información.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">18. Recopilación y Análisis de Feedback</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Observar y tomar notas durante las pruebas.</li>
+                        <li>Recopilar métricas cuantitativas (tasas de éxito, tiempo en tarea) y cualitativas (comentarios, dificultades observadas).</li>
+                        <li>Analizar los resultados para identificar problemas de usabilidad y áreas de mejora.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">19. Presentación de Hallazgos</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Comunicar los resultados de las pruebas y las recomendaciones al equipo y stakeholders.</li>
+                        <li>Utilizar artefactos visuales (clips de video, informes) para ilustrar los problemas.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">20. Iteración del Diseño</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Refinar los diseños (wireframes, mockups, prototipos) basándose en el feedback obtenido.</li>
+                        <li>Repetir el ciclo de probar y refinar según sea necesario.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">21. Validación con Stakeholders</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Presentar los diseños y prototipos a los stakeholders para obtener su feedback y aprobación.</li>
+                        <li>Asegurarse de que el diseño sigue alineado con los objetivos de negocio y las restricciones técnicas.</li>
+                    </ul>
+                </section>
+
+                <section id="fase4" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Fase 4: Implementación y Handoff</h2>
+                     <p class="mb-6 text-lg italic leading-relaxed">Entrega y Soporte al Desarrollo</p>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">22. Preparación de Entregables para Desarrollo</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Crear especificaciones de diseño detalladas (redlines, medidas, especificaciones de comportamiento).</li>
+                        <li>Exportar assets gráficos (iconos, imágenes) en los formatos y resoluciones necesarios.</li>
+                        <li>Documentar flujos, interacciones complejas y casos de borde (edge cases).</li>
+                        <li>Proporcionar acceso a prototipos o archivos de diseño (ej. Figma, Zeplin).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">23. Colaboración con Desarrollo</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Comunicarse continuamente con los ingenieros durante el desarrollo.</li>
+                        <li>Responder preguntas y clarificar dudas sobre el diseño.</li>
+                        <li>Participar en reuniones de planificación de sprint, revisiones y retrospectivas (en metodologías Agile).</li>
+                        <li>Negociar soluciones técnicas viables que mantengan la intención del diseño.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">24. Revisión de Diseño (Design QA)</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Revisar las versiones desarrolladas del producto (en entornos de prueba o staging).</li>
+                        <li>Comparar la implementación con las especificaciones de diseño.</li>
+                        <li>Identificar discrepancias visuales o funcionales y reportarlas (bugs de diseño).</li>
+                        <li>Asegurar la calidad y la fidelidad de la implementación final.</li>
+                    </ul>
+                </section>
+
+                <section id="fase5" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Fase 5: Post-Lanzamiento, Medición e Iteración Continua</h2>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">25. Monitorización Post-Lanzamiento</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Analizar métricas de uso del producto real (analytics) para entender el comportamiento del usuario.</li>
+                        <li>Monitorizar el feedback de los usuarios a través de canales como soporte, encuestas in-app, reseñas.</li>
+                        <li>Colaborar con el equipo de producto para evaluar si se alcanzaron los objetivos definidos.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">26. Recopilación Continua de Feedback</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Realizar pruebas de usabilidad periódicas en el producto en vivo.</li>
+                        <li>Lanzar encuestas de satisfacción (ej. NPS, CSAT).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">27. Identificación de Nuevas Oportunidades</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Identificar áreas de mejora o nuevas funcionalidades basadas en datos y feedback.</li>
+                        <li>Mantenerse al día con las tendencias del mercado y la competencia.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">28. Diseño Iterativo</h3>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li>Diseñar mejoras incrementales y nuevas características.</li>
+                        <li>Repetir el ciclo de diseño (investigación, ideación, prototipado, prueba) para futuras versiones.</li>
+                        <li>Actualizar y evolucionar el sistema de diseño según sea necesario.</li>
+                    </ul>
+                </section>
+
+                <section id="habilidades-transversales" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Responsabilidades y Habilidades Transversales</h2>
+                     <ul class="list-disc space-y-2 mb-4 pl-4">
+                        <li><strong>Comunicación:</strong> Presentar diseños, justificar decisiones, comunicar hallazgos, facilitar reuniones.</li>
+                        <li><strong>Colaboración:</strong> Trabajar eficazmente en equipos multidisciplinares (PMs, ingenieros, marketing, etc.).</li>
+                        <li><strong>Defensa del Usuario:</strong> Ser la voz del usuario dentro del equipo y la organización.</li>
+                        <li><strong>Pensamiento Crítico y Resolución de Problemas:</strong> Analizar problemas complejos, proponer soluciones efectivas/creativas.</li>
+                        <li><strong>Pensamiento Estratégico:</strong> Conectar decisiones de diseño con objetivos de negocio/producto.</li>
+                        <li><strong>Conocimiento Técnico:</strong> Comprender posibilidades/limitaciones tecnológicas (sin necesidad de programar, pero entendiendo viabilidad).</li>
+                        <li><strong>Gestión del Tiempo y Priorización:</strong> Manejar múltiples tareas/proyectos.</li>
+                        <li><strong>Adaptabilidad:</strong> Ajustar proceso/metodologías según necesidades.</li>
+                        <li><strong>Aprendizaje Continuo:</strong> Actualizarse en herramientas, técnicas, tendencias, tecnologías.</li>
+                        <li><strong>Mentoría (a veces):</strong> Guiar a diseñadores más junior.</li>
+                    </ul>
+                     <p class="italic text-gray-600 leading-relaxed">Es un rol multifacético que requiere una combinación de habilidades creativas, analíticas y de comunicación para crear productos digitales exitosos, útiles y deseables, a la vez que viables para el negocio y la tecnología.</p>
+                </section>
+
+                <section id="metodologias" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">I. Metodologías y Marcos Generales</h2>
+                     <p class="mb-6 italic leading-relaxed">Enfoques globales que guían el proceso.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4">
+                        <li><strong>Design Thinking:</strong> Proceso iterativo centrado en el ser humano (Empatizar, Definir, Idear, Prototipar, Testear).</li>
+                        <li><strong>Lean UX:</strong> Minimizar desperdicio, maximizar aprendizaje validado (Construir-Medir-Aprender). Se integra con Agile.</li>
+                        <li><strong>User-Centered Design (UCD):</strong> Pone necesidades/limitaciones del usuario en el centro de cada etapa.</li>
+                        <li><strong>Human-Centered Design (HCD):</strong> Similar a UCD, enfoque más amplio (ética, social, sistemas).</li>
+                        <li><strong>Agile Development:</strong> Diseñador trabaja dentro de estos marcos (Scrum, Kanban), adaptando entregables/procesos.</li>
+                        <li><strong>Double Diamond:</strong> Modelo de proceso (Descubrir, Definir, Desarrollar, Entregar) visualizando divergencia/convergencia.</li>
+                        <li><strong>Service Design:</strong> Enfoque holístico para diseñar experiencias de servicio completas (touchpoints, actores, procesos).</li>
+                        <li><strong>Goal-Directed Design:</strong> Metodología enfocada en objetivos de usuarios (definidos por Personas) para guiar diseño.</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-investigacion" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">II. Herramientas: Investigación y Descubrimiento</h2>
+                     <p class="mb-6 italic leading-relaxed">Para entender problema, mercado, usuarios y contexto.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="9">
+                        <li><strong>Entrevistas con Usuarios:</strong> Cualitativas (profundizar motivaciones, necesidades).</li>
+                        <li><strong>Encuestas:</strong> Cuantitativas/mixtas (datos muestra grande sobre actitudes, preferencias).</li>
+                        <li><strong>Investigación Contextual:</strong> Observar/entrevistar usuarios en su entorno natural.</li>
+                        <li><strong>Estudios Etnográficos:</strong> Inmersión profunda en entorno cultural/social.</li>
+                        <li><strong>Focus Groups:</strong> Discusiones grupales moderadas (explorar opiniones, actitudes).</li>
+                        <li><strong>Estudios de Diario:</strong> Usuarios registran experiencias/pensamientos en el tiempo.</li>
+                        <li><strong>Análisis Competitivo:</strong> Evaluar competencia (fortalezas, debilidades, DAFO).</li>
+                        <li><strong>Análisis Heurístico:</strong> Expertos evalúan interfaz según principios de usabilidad.</li>
+                        <li><strong>Pruebas de Usabilidad (tempranas):</strong> Observar usuarios con producto/prototipo temprano.</li>
+                        <li><strong>Entrevistas con Stakeholders:</strong> Entender objetivos negocio, restricciones, visión.</li>
+                        <li><strong>Investigación de Mercado:</strong> Analizar tamaño mercado, tendencias, segmentación.</li>
+                        <li><strong>Análisis de Datos y Analítica Web/App:</strong> Revisar datos cuantitativos de uso (identificar patrones).</li>
+                        <li><strong>Revisión de Literatura:</strong> Consultar investigaciones académicas, informes industria.</li>
+                        <li><strong>Customer Journey Mapping:</strong> Visualizar experiencia completa del usuario.</li>
+                        <li><strong>Service Blueprinting:</strong> Extensión Journey Map (incluye acciones backstage).</li>
+                        <li><strong>Jobs-to-be-Done (JTBD) Framework:</strong> Enfocarse en el "trabajo" que usuario intenta realizar.</li>
+                        <li><strong>Desarrollo de Personas:</strong> Creación de arquetipos de usuarios ficticios.</li>
+                        <li><strong>Mapas de Empatía:</strong> Herramienta visual para sintetizar conocimiento usuarios.</li>
+                        <li><strong>Card Sorting:</strong> Entender cómo usuarios agrupan/etiquetan información (para AI).</li>
+                        <li><strong>Tree Testing:</strong> Evaluar facilidad para encontrar info en estructura navegación propuesta.</li>
+                    </ul>
+                </section>
+
+                <section id="herramientas-ideacion" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">III. Herramientas: Ideación y Definición</h2>
+                     <p class="mb-6 italic leading-relaxed">Para generar ideas, definir la solución y priorizar.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="29">
+                        <li><strong>Brainstorming:</strong> Generación de ideas en grupo.</li>
+                        <li><strong>Brainwriting / Método 6-3-5:</strong> Generación individual/silenciosa, construcción sobre ideas otros.</li>
+                        <li><strong>SCAMPER:</strong> Técnica con verbos de acción para estimular creatividad.</li>
+                        <li><strong>Mind Mapping:</strong> Diagrama visual para organizar/explorar ideas.</li>
+                        <li><strong>Storyboarding:</strong> Secuencia visual narrando historia/interacción usuario.</li>
+                        <li><strong>User Stories / Job Stories:</strong> Formato para definir requerimientos (perspectiva usuario).</li>
+                        <li><strong>Task Analysis:</strong> Descomponer tareas usuario en pasos pequeños.</li>
+                        <li><strong>User Flow Diagrams:</strong> Visualizar pasos usuario para completar tarea.</li>
+                        <li><strong>Value Proposition Canvas:</strong> Asegurar que producto resuelve necesidades y crea valor.</li>
+                        <li><strong>Business Model Canvas:</strong> Mapear elementos clave modelo negocio.</li>
+                        <li><strong>Prioritization Frameworks:</strong>
+                            <ul class="list-disc">
+                                <li>MOSCOW (Must, Should, Could, Won't).</li>
+                                <li>RICE (Reach, Impact, Confidence, Effort).</li>
+                                <li>Kano Model (Básicas, Desempeño, Deleite).</li>
+                                <li>Value vs. Effort Matrix.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Affinity Diagramming / Clustering:</strong> Agrupar datos cualitativos en temas.</li>
+                        <li><strong>"How Might We" (HMW) Questions:</strong> Reformular problemas como preguntas para ideación.</li>
+                        <li><strong>Crazy 8's:</strong> Sketching rápido (8 ideas/8 min).</li>
+                        <li><strong>Role-Playing / Bodystorming:</strong> Actuar escenarios para ganar empatía/generar ideas.</li>
+                        <li><strong>Definición de Requerimientos del Producto (PRD):</strong> Documentar qué, para quién y por qué.</li>
+                        <li><strong>Roadmapping:</strong> Crear plan visual estratégico (visión, objetivos, desarrollo).</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-diseno" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">IV. Herramientas: Diseño y Prototipado</h2>
+                     <p class="mb-6 italic leading-relaxed">Para dar forma tangible a la solución.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="46">
+                        <li><strong>Sketching:</strong> Dibujos rápidos baja fidelidad (explorar conceptos).</li>
+                        <li><strong>Wireframing:</strong> Representaciones esquemáticas (estructura, layout, funcionalidad).</li>
+                        <li><strong>Mockups:</strong> Diseños estáticos alta fidelidad (apariencia visual final).</li>
+                        <li><strong>Prototyping:</strong> Creación modelos interactivos.
+                            <ul class="list-disc">
+                                <li>Paper Prototyping (rápido, básico).</li>
+                                <li>Clickable Prototypes (Figma, Sketch, XD; simulan navegación).</li>
+                                <li>Coded Prototypes (HTML/CSS/JS; alta fidelidad, interacciones complejas).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Information Architecture (IA) Design:</strong> Estructurar/organizar contenido.</li>
+                        <li><strong>Interaction Design (IxD):</strong> Definir comportamiento producto ante acciones usuario.</li>
+                        <li><strong>Visual Design:</strong> Definir estética, lenguaje visual, marca, tipografía, color.</li>
+                        <li><strong>Design Systems:</strong> Colección componentes reutilizables, guías (coherencia, eficiencia).</li>
+                        <li><strong>Atomic Design:</strong> Metodología para crear sistemas diseño (átomos -> moléculas -> organismos...).</li>
+                        <li><strong>Responsive Design:</strong> Diseñar interfaces adaptables a pantallas/dispositivos.</li>
+                        <li><strong>Accessibility Design:</strong> Diseñar para usuarios con discapacidades (WCAG).</li>
+                        <li><strong>Mood Boards:</strong> Colecciones visuales (explorar/comunicar dirección estética).</li>
+                        <li><strong>Style Guides:</strong> Documentación estándares visuales/interfaz (parte Design System).</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-pruebas" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">V. Herramientas: Prueba y Validación</h2>
+                     <p class="mb-6 italic leading-relaxed">Para asegurar que la solución funciona y cumple objetivos.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="59">
+                        <li><strong>Usability Testing:</strong> Moderated/Unmoderated, Remote/In-person.</li>
+                        <li><strong>A/B Testing / Multivariate Testing:</strong> Comparar rendimiento 2+ versiones diseño.</li>
+                        <li><strong>Preference Testing:</strong> Preguntar preferencia visual/conceptual usuarios.</li>
+                        <li><strong>First Click Testing:</strong> Evaluar si usuarios identifican dónde hacer clic.</li>
+                        <li><strong>Accessibility Audits:</strong> Revisiones sistemáticas cumplimiento accesibilidad (WCAG).</li>
+                        <li><strong>Beta Testing:</strong> Liberar versión casi final a grupo limitado para feedback real.</li>
+                        <li><strong>Smoke Testing:</strong> Pruebas básicas funcionalidades críticas post-despliegue.</li>
+                        <li><strong>Performance Testing:</strong> Evaluar velocidad, respuesta, estabilidad bajo carga.</li>
+                        <li><strong>Eye Tracking:</strong> Tecnología rastreo mirada (entender atención visual).</li>
+                        <li><strong>Desirability Studies:</strong> Evaluar respuesta emocional/cualidades estéticas.</li>
+                        <li><strong>Fake Door Testing:</strong> Medir interés real funcionalidad inexistente antes de construirla.</li>
+                        <li><strong>System Usability Scale (SUS):</strong> Cuestionario estandarizado medir usabilidad subjetiva.</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-implementacion" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">VI. Herramientas: Implementación y Lanzamiento</h2>
+                     <p class="mb-6 italic leading-relaxed">Para trabajar con desarrollo y llevar producto al mercado.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="71">
+                        <li><strong>Design Handoff:</strong> Proporcionar especificaciones, assets, prototipos a desarrolladores.</li>
+                        <li><strong>Developer Collaboration:</strong> Trabajo cercano/continuo con ingeniería durante implementación.</li>
+                        <li><strong>Quality Assurance (QA) Support:</strong> Revisar producto implementado (asegurar coincidencia diseño).</li>
+                        <li><strong>Launch Planning:</strong> Coordinar con marketing, ventas, soporte para lanzamiento.</li>
+                        <li><strong>Design Documentation:</strong> Registrar decisiones, lógica, especificaciones, guías.</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-iteracion" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">VII. Herramientas: Iteración y Optimización</h2>
+                     <p class="mb-6 italic leading-relaxed">Para mejorar producto post-lanzamiento.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="76">
+                        <li><strong>Analytics Review:</strong> Monitoreo continuo métricas/datos uso (identificar mejoras).</li>
+                        <li><strong>User Feedback Analysis:</strong> Recopilar/analizar comentarios usuarios (soporte, redes, NPS).</li>
+                        <li><strong>Continuous Discovery Habits:</strong> Investigación usuarios regular/continua (no solo inicial).</li>
+                        <li><strong>Feature Usage Tracking:</strong> Analizar qué características son más/menos usadas.</li>
+                        <li><strong>Post-Launch Surveys:</strong> Recoger feedback específico post-interacción.</li>
+                        <li><strong>Iterative Design:</strong> Ciclo continuo diseñar, probar, aprender, refinar.</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-estrategia" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">VIII. Herramientas: Metodologías de Negocio y Estrategia</h2>
+                     <p class="mb-6 italic leading-relaxed">Para conectar diseño con objetivos negocio.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="82">
+                        <li><strong>OKR Setting:</strong> Definir objetivos/resultados clave medibles (alinear con empresa).</li>
+                        <li><strong>KPI Tracking:</strong> Medir impacto diseño en indicadores clave negocio.</li>
+                        <li><strong>Business Case Development:</strong> Justificar iniciativas diseño (mostrar valor negocio).</li>
+                        <li><strong>Market Segmentation Analysis:</strong> Identificar/entender grupos clientes (adaptar producto).</li>
+                        <li><strong>SWOT Analysis:</strong> Evaluar Fortalezas, Debilidades, Oportunidades, Amenazas.</li>
+                        <li><strong>Product Vision Setting:</strong> Definir estado futuro deseado a largo plazo producto.</li>
+                        <li><strong>Pricing Strategy Input:</strong> Informar cómo diseño influye estrategia precios.</li>
+                    </ul>
+                </section>
+
+                 <section id="herramientas-colaboracion" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">IX. Herramientas: Colaboración y Comunicación</h2>
+                     <p class="mb-6 italic leading-relaxed">Esenciales para trabajar eficazmente en equipo.</p>
+                     <ul class="list-decimal space-y-2 mb-4 pl-4" start="89">
+                        <li><strong>Design Critiques / Reviews:</strong> Sesiones estructuradas dar/recibir feedback constructivo.</li>
+                        <li><strong>Workshops:</strong> Sesiones facilitadas co-creación, alineación, toma decisiones.</li>
+                        <li><strong>Pair Design:</strong> Dos diseñadores trabajando juntos, o diseñador con desarrollador/PM.</li>
+                        <li><strong>Storytelling:</strong> Usar historias comunicar investigación, proceso, visión, decisiones.</li>
+                        <li><strong>Presentation Skills:</strong> Comunicar eficazmente ideas/diseños/resultados.</li>
+                        <li><strong>Facilitation Skills:</strong> Guiar reuniones/talleres eficazmente.</li>
+                        <li><strong>Cross-functional Collaboration:</strong> Trabajar eficazmente con roles diversos.</li>
+                    </ul>
+                </section>
+
+                <section id="herramientas-lista" class="mb-12 scroll-mt-20 md:scroll-mt-4">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Lista Detallada de Herramientas por Fase</h2>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 1: Investigación y Descubrimiento</h3>
+                    <h4>Investigación Cualitativa:</h4>
+                    <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Video Conferencias:</strong> Zoom, Google Meet, Teams, Whereby, Lookback.</li>
+                        <li><strong>Transcripción/Análisis:</strong> Otter.ai, Descript, Dovetail, Condens, Grain.</li>
+                        <li><strong>Reclutamiento:</strong> User Interviews, Respondent.io, Ethnio, Testing Time.</li>
+                        <li><strong>Grabación Sesiones:</strong> Lookback, Camtasia, QuickTime, OBS Studio.</li>
+                    </ul>
+                    <h4>Investigación Cuantitativa:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Encuestas:</strong> Google Forms, SurveyMonkey, Typeform, Qualtrics, Maze, Jotform.</li>
+                        <li><strong>Análisis Datos:</strong> GA4, Mixpanel, Amplitude, Pendo, Heap, Hotjar, FullStory, Contentsquare.</li>
+                    </ul>
+                     <h4>Investigación Mercado/Competencia:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Análisis Competencia:</strong> SimilarWeb, SEMrush, Ahrefs, BuiltWith, data.ai.</li>
+                        <li><strong>Recopilación Info:</strong> Feedly, Google Alerts, Crunchbase.</li>
+                        <li><strong>Tendencias:</strong> Google Trends.</li>
+                    </ul>
+                     <h4>Organización Investigación:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Repositorios:</strong> Dovetail, Condens, Notion, Airtable, EnjoyHQ.</li>
+                        <li><strong>Mapas Afinidad:</strong> Miro, FigJam, Mural, Whimsical.</li>
+                    </ul>
+                     <h4>Personas y Journey Maps:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Específicas:</strong> Smaply, UXPressia.</li>
+                        <li><strong>Flexibles:</strong> Miro, FigJam, Mural, Whimsical, Figma, Sketch, XD, Lucidchart.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 2: Ideación y Conceptualización</h3>
+                     <h4>Brainstorming y Mapas Mentales:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Pizarras Digitales:</strong> Miro, FigJam, Mural, Whimsical, Microsoft Whiteboard, Freeform.</li>
+                        <li><strong>Mapas Mentales:</strong> MindMeister, XMind, Coggle, SimpleMind.</li>
+                    </ul>
+                     <h4>Diagramas Flujo y AI:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Diagramación:</strong> Lucidchart, Whimsical, Miro, FigJam, Draw.io, OmniGraffle.</li>
+                        <li><strong>Específicas AI:</strong> Optimal Workshop (Treejack, OptimalSort).</li>
+                    </ul>
+                     <h4>Sketching y Wireframing Lo-Fi:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Digital:</strong> Balsamiq, Whimsical, Excalidraw, Procreate, Concepts App, Sketchbook.</li>
+                        <li><strong>Físico:</strong> Papel y Lápiz + Apps Escaneo (Adobe Scan, Microsoft Lens).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 3: Diseño de Interfaz y Experiencia (UI/UX)</h3>
+                    <h4>Diseño UI y Wireframing Hi-Fi:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Principales:</strong> Figma, Sketch, Adobe XD.</li>
+                        <li><strong>Alternativas:</strong> InVision Studio, Framer, Penpot.</li>
+                        <li><strong>Enfoque Componentes:</strong> Modulz.</li>
+                    </ul>
+                     <h4>Prototipado Interactivo:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Integrado:</strong> Figma, Sketch (+plugins/InVision), XD.</li>
+                        <li><strong>Avanzado/Específico:</strong> Proto.io, Marvel App, InVision, Axure RP, Principle, Flinto, Framer.</li>
+                        <li><strong>Con Código:</strong> Framer (React), ProtoPie.</li>
+                    </ul>
+                     <h4>Diseño Gráfico y Edición Imágenes:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Vectorial:</strong> Illustrator, Affinity Designer, Inkscape, Figma/Sketch.</li>
+                        <li><strong>Raster:</strong> Photoshop, Affinity Photo, GIMP, Procreate.</li>
+                        <li><strong>Recursos:</strong> Freepik, Unsplash, Pexels, Iconify, Noun Project, Google Fonts, Adobe Fonts.</li>
+                    </ul>
+                     <h4>Sistemas de Diseño:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Documentación/Gestión:</strong> Zeroheight, Storybook, DSM, Specify, Notion, Confluence.</li>
+                        <li><strong>Creación:</strong> Directamente en Figma/Sketch/XD.</li>
+                    </ul>
+                     <h4>Accesibilidad (A11y):</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Contraste:</strong> Stark, Contrast, WebAIM Checker.</li>
+                        <li><strong>Simuladores Daltonismo:</strong> Color Oracle, Stark.</li>
+                        <li><strong>Checkers Automáticos:</strong> Axe DevTools, WAVE Tool.</li>
+                        <li><strong>Lectores Pantalla:</strong> VoiceOver, NVDA, JAWS.</li>
+                    </ul>
+
+                     <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 4: Pruebas y Validación</h3>
+                     <h4>Pruebas Usabilidad:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Plataformas Remotas:</strong> UserTesting, Lookback, Maze, UserZoom, UsabilityHub.</li>
+                        <li><strong>Grabación/Análisis:</strong> Lookback, Hotjar, FullStory.</li>
+                    </ul>
+                     <h4>Pruebas A/B:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Dedicadas:</strong> Optimizely, VWO, Google Optimize (descontinuado), AB Tasty.</li>
+                        <li><strong>Integradas:</strong> Amplitude, Pendo.</li>
+                    </ul>
+                      <h4>Recopilación Feedback:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Widgets:</strong> Hotjar, Userback, Pendo, Sprig.</li>
+                        <li><strong>Comunidades:</strong> Canny.io, UserVoice.</li>
+                    </ul>
+
+                     <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 5: Handoff y Colaboración con Desarrollo</h3>
+                     <h4>Especificaciones y Assets:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Dedicadas:</strong> Zeplin, Avocode, Sympli.</li>
+                        <li><strong>Integradas:</strong> Figma (modo Dev), Sketch (Cloud Inspector), XD (Share for Dev).</li>
+                        <li><strong>Tokens:</strong> Specify, Style Dictionary, Tokens Studio for Figma.</li>
+                    </ul>
+                      <h4>Colaboración y Comunicación:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Chat:</strong> Slack, Teams.</li>
+                        <li><strong>Gestión Proyectos:</strong> Jira, Asana, Trello, Monday.com, Linear, ClickUp, Shortcut.</li>
+                        <li><strong>Documentación:</strong> Confluence, Notion, GitBook, Slab.</li>
+                    </ul>
+                       <h4>Control Versiones (Diseño):</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Integrado:</strong> Figma.</li>
+                        <li><strong>Dedicado:</strong> Abstract, Plant (para Sketch).</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 6: Post-Lanzamiento, Monitoreo e Iteración</h3>
+                     <h4>Análisis Producto:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Analytics:</strong> GA4, Mixpanel, Amplitude, Pendo, Heap.</li>
+                        <li><strong>Visualización Datos:</strong> Tableau, Looker, Power BI.</li>
+                    </ul>
+                     <h4>Seguimiento Errores:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                         <li>Jira, Sentry, Bugsnag.</li>
+                     </ul>
+                     <h4>Gestión Roadmap:</h4>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li>Productboard, Aha!, Roadmunk, Jira (+addons), Asana, Trello, Notion, Canny.io.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Fase 7: Herramientas Transversales y de Productividad</h3>
+                     <ul class="list-disc pl-4 mb-3">
+                        <li><strong>Gestión Archivos:</strong> Google Drive, Dropbox, OneDrive, Box.</li>
+                        <li><strong>Toma Notas/Conocimiento:</strong> Notion, Evernote, Obsidian, Roam Research, Craft, Bear, Google Keep, Apple Notes.</li>
+                        <li><strong>Presentaciones:</strong> Google Slides, PowerPoint, Keynote, Pitch, Canva.</li>
+                        <li><strong>Automatización:</strong> Zapier, Make.</li>
+                        <li><strong>Contraseñas:</strong> 1Password, LastPass, Bitwarden.</li>
+                        <li><strong>Concentración/Tiempo:</strong> Forest app, Pomodoro timers, Clockify/Toggl.</li>
+                        <li><strong>Low-code/No-code:</strong> Webflow, Bubble, Softr, Glide, Adalo, Carrd.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Consideraciones Importantes</h3>
+                     <ol class="list-decimal space-y-2 mb-4 pl-4">
+                        <li><strong>Superposición:</strong> Muchas herramientas cubren múltiples fases.</li>
+                        <li><strong>Contexto:</strong> Elección depende de equipo, presupuesto, producto, cultura, stack.</li>
+                        <li><strong>Evolución:</strong> Panorama cambia rápidamente.</li>
+                        <li><strong>Integraciones:</strong> Capacidad de conectar herramientas es crucial.</li>
+                        <li><strong>Fundamentos:</strong> Ninguna herramienta reemplaza pensamiento crítico, empatía, comunicación, etc.</li>
+                    </ol>
+
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // --- Funcionalidad del Menú Móvil ---
+        const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileSidebarLinks = document.querySelectorAll('#mobile-menu .mobile-sidebar-link'); // Specific to mobile menu
+
+        // Abrir menú
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-closed');
+            mobileMenu.classList.add('menu-open');
+        });
+
+        // Cerrar menú con botón X
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.classList.add('menu-closed');
+        });
+
+        // Cerrar menú al hacer clic en un enlace (Mobile)
+        mobileSidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+                 // Find target and scroll (native smooth scroll)
+                 setTimeout(() => {
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('header.md\\:hidden')?.offsetHeight || 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        // Adjust for fixed header height only on mobile
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                 }, 100); // Short delay
+            });
+        });
+
+        // Cerrar menú si se hace clic fuera del área del menú lateral
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target === mobileMenu) {
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+            }
+        });
+
+
+        // --- Resaltado del Enlace Activo en Scroll (Escritorio) ---
+        const sections = document.querySelectorAll('section[id]');
+        const desktopSidebarLinks = document.querySelectorAll('#desktop-menu .sidebar-link'); // Specific to desktop menu
+        const mainContentArea = document.querySelector('main');
+
+        const makeDesktopLinksActive = () => {
+            if (!mainContentArea || window.innerWidth < 768) return; // Only run on desktop
+
+            let currentSectionId = '';
+            // Increased offset for better detection, especially with longer sections
+            const offset = window.innerHeight * 0.5;
+            const scrollPosition = mainContentArea.scrollTop;
+
+            sections.forEach(section => {
+                const sectionTopInViewport = section.getBoundingClientRect().top;
+                const mainTopInViewport = mainContentArea.getBoundingClientRect().top;
+                // Calculate section's top position relative to the scrollable 'main' container
+                const sectionTopRelativeToMain = sectionTopInViewport - mainTopInViewport + scrollPosition;
+                const sectionHeight = section.offsetHeight;
+
+                // Check if the section is within the detection zone (top half of the viewport)
+                if (scrollPosition >= sectionTopRelativeToMain - offset && scrollPosition < sectionTopRelativeToMain + sectionHeight - offset) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+             // Fallback for the last section if scroll reaches the bottom
+             if (!currentSectionId && (mainContentArea.scrollTop + mainContentArea.clientHeight >= mainContentArea.scrollHeight - 10)) { // 10px buffer
+                currentSectionId = sections[sections.length - 1]?.getAttribute('id') || '';
+             }
+
+            // Update active class on desktop links
+            desktopSidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        // Attach scroll listener to the main content area for desktop
+        if (mainContentArea) {
+            mainContentArea.addEventListener('scroll', makeDesktopLinksActive);
+        }
+        // Initial check on load and resize
+         window.addEventListener('load', makeDesktopLinksActive);
+         window.addEventListener('resize', makeDesktopLinksActive);
+
+        // --- Smooth scroll for desktop links ---
+         desktopSidebarLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement && mainContentArea) {
+                    const targetTopInViewport = targetElement.getBoundingClientRect().top;
+                    const mainTopInViewport = mainContentArea.getBoundingClientRect().top;
+                    // Calculate target position relative to the 'main' container's scroll position
+                    const targetPosition = targetTopInViewport - mainTopInViewport + mainContentArea.scrollTop;
+
+                    mainContentArea.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

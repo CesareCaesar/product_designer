@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosistema Completo de Herramientas para Product Designers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Active navigation link style */
+        .sidebar-link.active {
+            background-color: #e0f2fe; /* light-blue-100 */
+            color: #0c4a6e; /* cyan-800 */
+            font-weight: 600;
+        }
+        /* Smooth scroll offset */
+        html {
+             scroll-padding-top: 5rem; /* Adjust based on mobile header height */
+        }
+        section, article[id] { /* Target sections and articles with IDs */
+            scroll-margin-top: 5rem; /* Adjust based on mobile header height */
+        }
+        /* Mobile menu transition */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Fixed sidebar on desktop */
+        @media (min-width: 1024px) { /* lg breakpoint */
+            #sidebar {
+                height: 100vh;
+            }
+            #sidebar table { /* Ensure tables inside sidebar scroll horizontally if needed */
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #e5e7eb; /* gray-200 */
+            padding: 0.75rem; /* p-3 */
+            text-align: left;
+            vertical-align: top; /* Align content to top */
+        }
+        th {
+            background-color: #f3f4f6; /* gray-100 */
+            font-weight: 600;
+            font-size: 0.75rem; /* text-xs */
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* tracking-wider */
+            color: #4b5563; /* gray-600 */
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9fafb; /* gray-50 */
+        }
+        tbody td {
+             font-size: 0.875rem; /* text-sm */
+        }
+        /* Responsive table container */
+        .table-container {
+            overflow-x: auto;
+            background-color: white;
+            padding: 1rem; /* p-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        /* Sub-list styling */
+        ul ul, ol ul, ul ol, ol ol {
+            margin-left: 1.5rem; /* Indent nested lists */
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        li > ul, li > ol {
+            margin-top: 0.25rem;
+        }
+         /* Styling for articles within sections */
+        article {
+            margin-bottom: 2rem; /* mb-8 */
+            padding-bottom: 1.5rem; /* pb-6 */
+            border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+        }
+         article:last-child {
+             border-bottom: none;
+             margin-bottom: 0;
+             padding-bottom: 0;
+         }
+         /* Specific styling for sub-headings within articles */
+        article h4 {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #374151; /* text-gray-700 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        /* Highlight tool names */
+        .tool-name {
+            font-weight: 500;
+            color: #0e7490; /* cyan-700 */
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="flex flex-col lg:flex-row min-h-screen">
+
+        <header class="lg:hidden sticky top-0 z-30 bg-white shadow-md p-4 flex justify-between items-center h-16">
+            <h1 class="text-lg font-bold text-cyan-700 truncate">Herramientas Diseño Producto</h1>
+            <button id="menu-button" class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </header>
+
+        <aside id="sidebar" class="fixed top-0 left-0 z-40 h-screen w-72 bg-white shadow-lg p-6 overflow-y-auto transition-transform duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 lg:shadow-none lg:flex-shrink-0 lg:fixed lg:top-0 lg:left-0">
+             <button id="close-menu-button" class="lg:hidden absolute top-4 right-4 text-gray-600 hover:text-gray-900">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-xl font-bold text-cyan-700 mb-6 hidden lg:block">Herramientas Diseño</h2>
+            <nav>
+                
+                <ul class="space-y-1 text-sm" id="nav-links">
+                    <li><a href="#introduccion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">Introducción</a></li>
+                    <li>
+                        <a href="#investigacion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">I. Investigación y Análisis</a>
+                        <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#inv-usuarios" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Inv. Usuarios</a></li>
+                            <li><a href="#inv-ia" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Arq. Info / Flujo</a></li>
+                            <li><a href="#inv-mercado" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Análisis Compet./Mercado</a></li>
+                            <li><a href="#inv-analitica" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">D. Analítica Producto (Pre)</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#ideacion-colab" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">II. Ideación y Colaboración</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#ide-pizarras" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Pizarras / Brainstorming</a></li>
+                            <li><a href="#ide-feedback" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Colaboración / Feedback</a></li>
+                            <li><a href="#ide-gestion" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Gestión Proy. / DesignOps</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#creacion-ejecucion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">III. Creación y Ejecución</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#cre-wireframe" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Wireframing / Mockups</a></li>
+                            <li><a href="#cre-uiux" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Diseño UI/UX / Vectorial</a></li>
+                            <li><a href="#cre-ia" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Diseño Asistido IA</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#prototipado-interaccion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">IV. Prototipado / Interacción</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#proto-lowfi" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Prototipado Baja Fidelidad</a></li>
+                            <li><a href="#proto-hifi" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Prototipado Alta Fidelidad</a></li>
+                            <li><a href="#proto-micro" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Microinteracción / Animación</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#activos" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">V. Creación / Gestión Activos</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#act-iconos" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Iconos</a></li>
+                            <li><a href="#act-fuentes" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Fuentes</a></li>
+                            <li><a href="#act-imagenes" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Ilustración / Imágenes / DAM</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#validacion-optimizacion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">VI. Validación y Optimización</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#val-usabilidad" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Pruebas Usabilidad</a></li>
+                            <li><a href="#val-accesibilidad" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Pruebas Accesibilidad</a></li>
+                            <li><a href="#val-ab" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Pruebas A/B / Experimentación</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#handoff-docs" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">VII. Handoff y Documentación</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#hand-specs" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Handoff / Especificación</a></li>
+                            <li><a href="#hand-ds" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. Sistemas Diseño / Docs</a></li>
+                            <li><a href="#hand-version" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Control Versiones (Dev)</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#medicion-integracion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">VIII. Medición e Integración</a>
+                         <ul class="ml-4 mt-1 space-y-1 border-l border-gray-200 pl-3">
+                            <li><a href="#med-analitica" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">A. Analítica Producto (Post)</a></li>
+                            <li><a href="#med-bi" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">B. BI / KPIs</a></li>
+                            <li><a href="#med-feedback" class="sidebar-link block px-3 py-1 rounded-md text-xs text-gray-600 hover:bg-cyan-50 hover:text-cyan-600 transition duration-150">C. Feedback Cliente / Sentimiento</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conclusion" class="sidebar-link block px-3 py-2 rounded-md text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 transition duration-150">Conclusión</a></li>
+                </br><b><a href="index.html" class="menu-link">Regresar</a></b>
+                </ul>
+            </nav>
+        </aside>
+
+        <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
+        <main class="flex-1 p-6 md:p-10 lg:p-12 lg:ml-72 overflow-y-auto"> 
+            <div class="max-w-4xl mx-auto">
+
+                <section id="introduccion" class="mb-16">
+                    <h1 class="text-4xl font-bold text-cyan-800 mb-6">El Ecosistema Completo de Herramientas para el Diseñador de Producto Moderno</h1>
+                    <p class="mb-4 text-lg text-gray-600">Inventario exhaustivo y organizado de herramientas de software para todo el ciclo de vida del desarrollo de productos.</p>
+                    <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                        <li><strong>Propósito:</strong> Ofrecer visión completa del ecosistema disponible (investigación, ideación, colaboración, ejecución, prototipado, validación, handoff, documentación, medición impacto).</li>
+                        <li><strong>Alcance:</strong> Proceso end-to-end, incluyendo factibilidad desarrollo y alineación negocio.</li>
+                        <li><strong>Metodología:</strong> Conocimiento experto + investigación herramientas, categorizadas por fase ciclo desarrollo.</li>
+                        <li><strong>Panorama Cambiante:</strong> Campo dinámico (especialización, integración, "todo en uno", IA).</li>
+                    </ul>
+                </section>
+
+                <section id="investigacion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">I. Comprensión del Paisaje: Herramientas de Investigación, Análisis y Estrategia</h2>
+                    <p class="mb-8">Establecer comprensión profunda de necesidades, comportamientos y motivaciones de usuarios.</p>
+
+                    <article id="inv-usuarios">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Investigación de Usuarios y Recopilación de Insights</h3>
+                        <h4>Herramientas de Encuestas y Feedback Contextual:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Qualaroo:</span> Encuestas multicanal, integración prototipos, segmentación avanzada, análisis IA.</li>
+                            <li><span class="tool-name">Pendo:</span> Encuestas in-app dirigidas, segmentación por comportamiento.</li>
+                            <li><span class="tool-name">Useberry:</span> Recopilación datos autoinformados (necesidades, opiniones).</li>
+                            <li><span class="tool-name">Proven By Users:</span> Encuestas orientadas a pruebas usuario (5-second tests, tree testing).</li>
+                            <li><span class="tool-name">Google Forms / SurveyMonkey / Typeform:</span> Propósito general, accesibles, para investigaciones iniciales/amplias.</li>
+                        </ul>
+
+                        <h4>Plataformas de Investigación de Usuarios (Cualitativa y Cuantitativa):</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">UserTesting:</span> Líder industria, pruebas mod/no-mod, prototipos, encuestas, panel global, análisis IA. Coste elevado.</li>
+                            <li><span class="tool-name">Userlytics:</span> "Todo en uno", reclutamiento, pruebas diversas, análisis, transcripciones auto, panel global.</li>
+                            <li><span class="tool-name">UserZoom (ahora UserTesting):</span> Históricamente fuerte empresa, encuestas, card sorting, tree testing, click testing, pruebas usabilidad.</li>
+                            <li><span class="tool-name">Maze:</span> Pruebas no moderadas (usabilidad, prototipos, web, encuestas, tree/card sorting), integración diseño, informes auto. Limitaciones prototipos complejos/panel.</li>
+                            <li><span class="tool-name">Lookback:</span> Pruebas remotas mod/no-mod, observación real-time.</li>
+                            <li><span class="tool-name">PlaybookUX:</span> Facilita pruebas usabilidad remotas, entrevistas, encuestas cuantitativas.</li>
+                            <li><span class="tool-name">Dscout:</span> Fuerte cualitativa (estudios diario, entrevistas remotas), transcripciones vídeo, panel calidad (EEUU).</li>
+                            <li><span class="tool-name">Userbrain:</span> Pruebas usabilidad, colaboración análisis, pruebas regulares, asequible startups.</li>
+                             <li><span class="tool-name">UserFeel:</span> Modelo pago por uso.</li>
+                             <li><span class="tool-name">Trymata (TryMyUI):</span> Grabación pantalla + análisis detallados, filtros reclutamiento.</li>
+                             <li><span class="tool-name">Lightster:</span> Feedback real-time, conexión audiencia.</li>
+                             <li><span class="tool-name">UXArmy:</span> Imágenes en encuestas, pruebas mod/no-mod.</li>
+                             <li><span class="tool-name">Loop11:</span> Especializada tree testing, pruebas usabilidad web.</li>
+                             <li><span class="tool-name">UX Metrics:</span> Seguimiento KPIs, rutas prueba personalizadas.</li>
+                             <li><span class="tool-name">Lyssna (UsabilityHub):</span> Pruebas rápidas (primer clic, preferencia, 5 segundos). Plan gratuito.</li>
+                             <li><span class="tool-name">User Interviews:</span> Plataforma reclutamiento/gestión participantes.</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Panorama diverso: soluciones integrales vs. especializadas. Integración diseño, calidad panel, precios varían. Moderado vs. No moderado clave.</p>
+                    </article>
+
+                    <article id="inv-ia">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Arquitectura de la Información y Mapeo del Flujo de Usuario</h3>
+                         <p class="mb-4">Organizar contenido lógicamente, definir navegación.</p>
+                        <h4>Herramientas de Card Sorting:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Optimal Workshop (OptimalSort):</span> Líder (abierto, cerrado, híbrido), análisis detallado.</li>
+                            <li><span class="tool-name">Maze:</span> Funcionalidad card sorting (abierto, cerrado).</li>
+                            <li><span class="tool-name">UserZoom (ahora UserTesting):</span> Ofrecía card sorting.</li>
+                            <li><span class="tool-name">UXtweak:</span> Soporta 3 tipos card sorting.</li>
+                            <li><span class="tool-name">UXMetrics:</span> Dedicada card sorting/tree testing, visualizaciones.</li>
+                             <li><span class="tool-name">kardSort:</span> Gratuita, web, 3 tipos, exportación.</li>
+                             <li><span class="tool-name">xSort App:</span> Gratuita macOS, estudios sencillos.</li>
+                             <li><span class="tool-name">Simple Card Sort:</span> Mencionada.</li>
+                             <li><span class="tool-name">Miro / FigJam / Mural:</span> Manual/visual, colaboración, sin análisis auto.</li>
+                         </ul>
+
+                        <h4>Herramientas de Tree Testing:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Optimal Workshop (Treejack):</span> Estándar de facto evaluar encontrabilidad.</li>
+                            <li><span class="tool-name">Maze:</span> Capacidades tree testing.</li>
+                            <li><span class="tool-name">UserZoom (ahora UserTesting):</span> Incluía tree testing.</li>
+                            <li><span class="tool-name">UXtweak:</span> Herramientas tree testing.</li>
+                            <li><span class="tool-name">Loop11:</span> Especializada tree testing, pruebas usabilidad web.</li>
+                            <li><span class="tool-name">Proven By Users:</span> Incluye tree testing.</li>
+                         </ul>
+
+                        <h4>Herramientas de Diagramación y Flujo:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Lucidchart:</span> Potente diagramas flujo, organigramas, procesos complejos.</li>
+                            <li><span class="tool-name">Miro / Mural / FigJam:</span> Mapeo visual flujos, brainstorming estructuras, colaboración real-time.</li>
+                            <li><span class="tool-name">Whimsical:</span> Planificación visual ligera, wireframes rápidos, mapas mentales, diagramas flujo.</li>
+                            <li><span class="tool-name">Creately:</span> Diagramación versátil + gestión proyectos.</li>
+                            <li><span class="tool-name">Overflow / FlowMapp:</span> Especializadas diagramas flujo usuario interactivos/detallados.</li>
+                            <li><span class="tool-name">OmniGraffle:</span> Potente diagramación (macOS).</li>
+                        </ul>
+                        <p class="text-xs italic mb-4">Elección depende necesidad análisis riguroso (Optimal Workshop) vs. flexibilidad visual/colaboración (Miro, Lucidchart).</p>
+                    </article>
+
+                     <article id="inv-mercado">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Análisis Competitivo y de Mercado</h3>
+                        <p class="mb-4">Comprender panorama competitivo, tendencias, oportunidades diferenciación.</p>
+                        <h4>Herramientas de Revisión de Software:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">G2, Capterra, TrustRadius:</span> Útiles para analizar features, fortalezas/debilidades, feedback usuarios productos competidores.</p>
+
+                        <h4>Herramientas de Inteligencia de Mercado:</h4>
+                         <p class="text-sm mb-4"><span class="tool-name">SimilarWeb, SEMrush, Ahrefs:</span> Analizar tráfico web competidores, palabras clave, presencia online.</p>
+
+                        <h4>Herramientas de Monitoreo Social:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Brandwatch, Mention:</span> Rastrear menciones competidores redes sociales, obtener insights percepción pública.</p>
+                    </article>
+
+                    <article id="inv-analitica">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">D. Analítica de Producto y Comportamiento (Pre-diseño)</h3>
+                         <p class="mb-4">Analizar datos uso producto existente para identificar problemas/oportunidades antes rediseño.</p>
+                        <h4>Plataformas de Analítica de Producto:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Amplitude, Mixpanel, Heap, Google Analytics:</span> Esenciales rastrear acciones, definir funnels, medir retención, segmentar usuarios.</p>
+
+                        <h4>Herramientas Grabación Sesiones / Mapas Calor:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Hotjar, Crazy Egg, LogRocket, UXCam (móvil), FullStory:</span> Visualizar interacciones reales (clics, scroll, dificultades).</p>
+                         <p class="text-xs italic mb-4">Análisis pre-diseño proporciona evidencia cuantitativa problemas usabilidad. Informa prioridades rediseño, establece línea base medición éxito.</p>
+
+                        <div class="table-container mt-6">
+                            <h4 class="text-xl font-semibold text-gray-700 mb-3">Tabla Resumen: Herramientas Investigación y Análisis</h4>
+                            <table>
+                                <thead>
+                                    <tr><th>Herramienta</th><th>Categoría</th><th>Característica Clave / Enfoque</th><th>Modelo Precios (Indicativo)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Qualaroo</td><td>Encuestas / Feedback</td><td>Encuestas contextuales, integración prototipos, análisis IA</td><td>Pagado</td></tr>
+                                    <tr><td>UserTesting</td><td>Plataforma Inv. Usuarios</td><td>Panel amplio, pruebas mod/no-mod, análisis IA, encuestas</td><td>Empresa</td></tr>
+                                    <tr><td>Userlytics</td><td>Plataforma Inv. Usuarios</td><td>"Todo en uno", panel global, transcripciones auto.</td><td>Pagado / Empresa</td></tr>
+                                    <tr><td>Maze</td><td>Plataforma Inv. Usuarios</td><td>Pruebas no-mod, integración diseño, informes auto.</td><td>Freemium / Pagado</td></tr>
+                                    <tr><td>Optimal Workshop</td><td>IA (Card Sort/Tree Test)</td><td>Herramientas especializadas IA, análisis detallado</td><td>Pagado</td></tr>
+                                    <tr><td>Lucidchart</td><td>Diagramación</td><td>Diagramas flujo, procesos complejos</td><td>Freemium / Pagado</td></tr>
+                                    <tr><td>Miro/Mural/FigJam</td><td>Pizarra Digital / Diagram.</td><td>Brainstorming, flujos visuales, colaboración real-time</td><td>Freemium / Pagado</td></tr>
+                                    <tr><td>G2/Capterra</td><td>Revisión Software</td><td>Análisis competitivo (feedback usuarios, features)</td><td>N/A (Plataforma)</td></tr>
+                                    <tr><td>Amplitude/Mixpanel</td><td>Analítica Producto</td><td>Seguimiento comportamiento, funnels, retención (existente)</td><td>Freemium / Pagado / Empresa</td></tr>
+                                    <tr><td>Hotjar/Crazy Egg</td><td>Grabación Sesión / Heatmap</td><td>Visualización interacción usuario (existente)</td><td>Freemium / Pagado</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+
+                <section id="ideacion-colab" class="mb-16">
+                     <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">II. Ideación, Colaboración y Alineación de Proyectos</h2>
+                     <p class="mb-8">Generar ideas, colaborar con equipo/stakeholders, alinear diseño con objetivos proyecto.</p>
+
+                    <article id="ide-pizarras">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Pizarras Digitales y Brainstorming</h3>
+                        <p class="mb-4">Espacios trabajo visuales para ideación colaborativa, talleres, mapeo afinidades.</p>
+                        <h4>Líderes Mercado:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Miro:</span> Completa, versátil, plantillas, integraciones.</li>
+                            <li><span class="tool-name">Mural:</span> Foco facilitación talleres, pensamiento creativo, metodologías ágiles.</li>
+                            <li><span class="tool-name">FigJam:</span> Pizarra Figma, integración nativa, ideal equipos diseño.</li>
+                        </ul>
+                        <h4>Alternativas / Nicho:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4 grid grid-cols-1 sm:grid-cols-2">
+                             <li><span class="tool-name">Lucidspark</span> (suite Lucid)</li>
+                             <li><span class="tool-name">Microsoft Whiteboard</span> (ecosistema MS)</li>
+                             <li><span class="tool-name">Google Jamboard</span> (Google Workspace)</li>
+                             <li><span class="tool-name">Klaxoon</span> (talleres interactivos, gamificación)</li>
+                             <li><span class="tool-name">Conceptboard</span> (colaboración visual, prototipos)</li>
+                             <li><span class="tool-name">Bluescape</span> (empresas, proyectos complejos)</li>
+                             <li><span class="tool-name">Stormboard</span> (convertir datos talleres en accionables)</li>
+                             <li><span class="tool-name">Sketchboard</span> (cohesión activos diseño)</li>
+                             <li><span class="tool-name">Creately</span> (diagramación + gestión proyectos)</li>
+                             <li><span class="tool-name">Whimsical</span> (wireframes rápidos, mapas mentales)</li>
+                             <li><span class="tool-name">Whiteboards.io</span> (opción gratuita)</li>
+                             <li><span class="tool-name">PencilSpaces</span> (entornos educativos)</li>
+                             <li><span class="tool-name">Collaboard</span> (seguimiento real-time)</li>
+                             <li><span class="tool-name">Moqups</span> (wireframing/prototipado simple)</li>
+                             <li><span class="tool-name">Ziteboard</span></li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Elección depende integraciones, necesidades facilitación, potencia, foco diseño.</p>
+                    </article>
+
+                    <article id="ide-feedback">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Plataformas Colaborativas de Diseño y Feedback</h3>
+                        <p class="mb-4">Facilitar revisión/feedback sobre diseños/prototipos por equipo/stakeholders.</p>
+                        <h4>Integradas Herramientas Diseño/Prototipado:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Figma, Sketch (Cloud), Adobe XD (hist.):</span> Comentarios, anotaciones, discusiones sobre lienzos/prototipos. Figma destaca colaboración real-time.</li>
+                            <li><span class="tool-name">InVision:</span> Históricamente líder compartir prototipos/recoger feedback.</li>
+                         </ul>
+                        <h4>Herramientas Dedicadas Feedback/Anotación:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Frame.io / Filestage:</span> Principalmente revisión vídeo/activos creativos.</li>
+                            <li><span class="tool-name">Markup.io / Pastel:</span> Comentarios/anotaciones sobre sitios web vivo / maquetas URL.</li>
+                            <li><span class="tool-name">Qualaroo:</span> Incrustable prototipos para feedback contextualizado.</li>
+                            <li><span class="tool-name">Avocode:</span> Revisión diseños, feedback, seguimiento iteraciones.</li>
+                        </ul>
+                        <p class="text-xs italic mb-4">Tendencia a usar funcionalidades colaboración integradas (Figma) por conveniencia/agilidad.</p>
+                    </article>
+
+                    <article id="ide-gestion">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Herramientas de Gestión de Proyectos y Design Ops</h3>
+                        <p class="mb-4">Organizar tareas diseño, seguir progreso, gestionar recursos, integrar flujo diseño con desarrollo/operaciones.</p>
+                        <h4>Gestión Tareas / Proyectos:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Jira:</span> Estándar desarrollo ágil. Integración con herramientas diseño/handoff (Zeplin, UXPin, Figma, XD). Puente diseño-desarrollo.</li>
+                            <li><span class="tool-name">Asana:</span> Popular gestión proyectos/tareas equipos diseño.</li>
+                            <li><span class="tool-name">Trello:</span> Tableros Kanban visuales. Integración Zeplin.</li>
+                            <li><span class="tool-name">Monday.com:</span> Plataforma visual gestión trabajo.</li>
+                            <li><span class="tool-name">ClickUp:</span> Plataforma unificada (proyectos, pizarras, docs, chat).</li>
+                            <li><span class="tool-name">Notion:</span> Versátil (proyectos, notas, wikis, documentación sistemas diseño).</li>
+                        </ul>
+                        <h4>Herramientas Específicas Design Ops:</h4>
+                        <p class="text-sm mb-4">Más mentalidad/prácticas que herramientas dedicadas. Gestión operativa vía herramientas gestión proyectos y funcionalidades colaboración/sistemas diseño plataformas principales.</p>
+                        <p class="text-xs italic mb-4">Integración fluida entre herramientas (diseño, gestión tareas, handoff) crítica. Herramientas multifuncionales (Notion, ClickUp) ganan popularidad.</p>
+                    </article>
+                </section>
+
+                 <section id="creacion-ejecucion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">III. Creación y Ejecución del Diseño</h2>
+                    <p class="mb-8">Materialización ideas en artefactos diseño concretos (bocetos -> UI alta fidelidad -> activos visuales).</p>
+
+                    <article id="cre-wireframe">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Herramientas de Wireframing y Mockups</h3>
+                        <p class="mb-4">Crear esquemas baja/media fidelidad. Definir estructura, layout, jerarquía, funcionalidad básica.</p>
+                        <h4>Herramientas Dedicadas Wireframing:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Balsamiq Mockups:</span> Famosa estética "boceto", centra discusiones estructura/flujo.</li>
+                            <li><span class="tool-name">MockFlow:</span> Enfocada velocidad, generación rápida ideas.</li>
+                            <li><span class="tool-name">Axure RP:</span> Potente prototipado, también genera wireframes detallados.</li>
+                            <li><span class="tool-name">Moqups:</span> Wireframing/prototipado drag-and-drop.</li>
+                        </ul>
+                        <h4>Herramientas Diseño UI/UX con Capacidades Wireframing:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Figma / Sketch / Adobe XD (hist.):</span> Creación rápida wireframes, evolución a alta fidelidad mismo archivo.</li>
+                             <li><span class="tool-name">Whimsical:</span> Wireframes rápidos/sencillos, combinación diagramas/mapas mentales.</li>
+                        </ul>
+                         <p class="text-xs italic mb-4">Aunque existen herramientas dedicadas (Balsamiq), eficiencia de permanecer en herramienta principal (Figma, Sketch) lleva a muchos a hacer wireframing allí.</p>
+                    </article>
+
+                    <article id="cre-uiux">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Diseño UI/UX y Edición Vectorial</h3>
+                        <p class="mb-4">Creación interfaces finales detalladas/pulidas (estilos, componentes, activos). Basado edición vectorial.</p>
+                        <h4>Líderes Mercado (Basados Vectores):</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Figma:</span> Plataforma dominante. Basada nube, colaboración real-time, todo en uno (diseño, proto, handoff), ecosistema plugins/recursos.</li>
+                            <li><span class="tool-name">Sketch:</span> Nativa macOS, pionera diseño UI moderno. Potente, preferida ecosistema Apple. Requiere plugins/servicios para funcionalidades avanzadas.</li>
+                            <li><span class="tool-name">Adobe XD:</span> (Discontinuado desarrollo activo). Parte suite Adobe, integración Photoshop/Illustrator, buen prototipado. No recomendable nuevos proyectos.</li>
+                         </ul>
+                        <h4>Alternativas / Emergentes:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Penpot:</span> Open-source, web. Uso nativo estándares web (CSS, SVG, HTML). Puente diseño-código.</li>
+                             <li><span class="tool-name">UXPin:</span> Basada código. Trabajar directo componentes React/Storybook. Prototipos muy alta fidelidad.</li>
+                             <li><span class="tool-name">Framer:</span> Evolucionado a plataforma diseño/construcción sitios web interactivos. Componentes React. Interacciones sofisticadas.</li>
+                             <li><span class="tool-name">Affinity Designer:</span> Potente editor vectorial, compra única. Alternativa Illustrator.</li>
+                             <li><span class="tool-name">Vectr:</span> Editor gráfico gratuito/sencillo, tareas básicas.</li>
+                             <li><span class="tool-name">Alva:</span> Trabajar directo componentes producción ingenieros.</li>
+                             <li><span class="tool-name">Antetype:</span> Mencionada diseño UI.</li>
+                         </ul>
+                        <h4>Herramientas Edición Vectorial General (Usadas para Activos):</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Adobe Illustrator:</span> Estándar industria ilustración vectorial compleja, iconos, logos.</p>
+                        <p class="text-xs italic mb-4">Enfoque colaborativo/todo-en-uno Figma le da posición dominante. Discontinuación XD refuerza. Alternativas (Penpot, UXPin, Framer) abordan mejora flujo diseño-código.</p>
+                    </article>
+
+                    <article id="cre-ia">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Herramientas de Diseño Asistidas por IA</h3>
+                         <p class="mb-4">IA integrada flujo diseño: acelerar tareas, generar UI, proponer variaciones, ayudar redacción.</p>
+                        <h4>Generación UI/Diseño:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Motiff:</span> Socio diseño IA. Genera UI (texto/imagen), aplica estilos, itera, genera módulos, edita imágenes, convierte web a diseño.</li>
+                            <li><span class="tool-name">Uizard:</span> "ChatGPT para diseño UI". Genera mockups multi-pantalla (prompts texto). Transforma capturas/wireframes a diseño digital. Ideación/prototipado rápidos.</li>
+                            <li><span class="tool-name">Galileo AI:</span> Genera UI funcionales/estéticas (texto). Exporta Figma/HTML. Sistema créditos.</li>
+                            <li><span class="tool-name">UXPilot.ai:</span> Generador UI IA (web/plugin Figma). Itera vía chat, genera flujos, aplica frameworks UX, genera código.</li>
+                         </ul>
+                        <h4>Asistentes Diseño / Plugins:</h4>
+                        <p class="text-sm mb-4">IA integrada funcionalidades plataformas existentes o tareas específicas (generación copy).</p>
+                        <p class="text-xs italic mb-4">IA centra actualmente automatizar generación UI inicial, facilitar iteraciones rápidas. Acelera flujo, libera tiempo diseñador. Plantea interrogantes originalidad, personalización, evolución rol diseñador (curador/director IA).</p>
+
+                         <div class="table-container mt-6">
+                            <h4 class="text-xl font-semibold text-gray-700 mb-3">Tabla Resumen: Herramientas Creación y Ejecución Diseño</h4>
+                            <table>
+                                <thead>
+                                    <tr><th>Herramienta</th><th>Categoría</th><th>Característica Clave / Enfoque</th><th>Plataforma</th><th>Modelo Precios (Indicativo)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Balsamiq Mockups</td><td>Wireframing</td><td>Estética boceto, enfoque estructura</td><td>Desktop/Web</td><td>Pagado</td></tr>
+                                    <tr><td>Figma</td><td>Diseño UI/UX</td><td>Colaboración real-time, todo en uno</td><td>Web (Principal)</td><td>Freemium / Pagado</td></tr>
+                                    <tr><td>Sketch</td><td>Diseño UI/UX</td><td>Nativo macOS, ecosistema plugins</td><td>macOS</td><td>Pagado (Suscripción/Licencia)</td></tr>
+                                    <tr><td>Penpot</td><td>Diseño UI/UX</td><td>Open Source, basado estándares web</td><td>Web</td><td>Gratuito (Open Source)</td></tr>
+                                    <tr><td>UXPin</td><td>Diseño UI/UX</td><td>Basado código (React/Storybook), alta fidelidad</td><td>Web</td><td>Pagado</td></tr>
+                                    <tr><td>Framer</td><td>Diseño UI/UX / Web</td><td>Diseño/construcción web, interacciones avanzadas (React)</td><td>Web</td><td>Freemium / Pagado</td></tr>
+                                    <tr><td>Adobe Illustrator</td><td>Edición Vectorial</td><td>Ilustración compleja, iconos, logos (estándar)</td><td>Desktop</td><td>Suscripción</td></tr>
+                                    <tr><td>Affinity Designer</td><td>Edición Vectorial</td><td>Alternativa potente Illustrator, compra única</td><td>Desktop/iPad</td><td>Compra Única</td></tr>
+                                    <tr><td>Motiff</td><td>Diseño UI Asistido IA</td><td>Generación UI (texto/imagen), iteración, conversión web</td><td>Web</td><td>Beta / Pagado</td></tr>
+                                    <tr><td>Uizard</td><td>Diseño UI Asistido IA</td><td>Generación UI (texto), conversión screenshot/wireframe</td><td>Web</td><td>Freemium / Pagado</td></tr>
+                                    <tr><td>Galileo AI</td><td>Diseño UI Asistido IA</td><td>Generación UI (texto), exportación Figma/HTML</td><td>Web</td><td>Freemium (Créditos) / Pagado</td></tr>
+                                    <tr><td>UXPilot.ai</td><td>Diseño UI Asistido IA</td><td>Generador UI (web/plugin Figma), chat, flujos, código</td><td>Web / Figma</td><td>Pagado</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+
+                 <section id="prototipado-interaccion" class="mb-16">
+                     <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">IV. Prototipado y Diseño de Interacción</h2>
+                     <p class="mb-8">Fase esencial validar ideas, probar flujos, comunicar experiencia interactiva.</p>
+
+                    <article id="proto-lowfi">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Herramientas de Prototipado de Baja Fidelidad</h3>
+                        <p class="mb-4">Crear rápido representaciones interactivas básicas (conceptos, flujos navegación). Foco estructura/secuencia.</p>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><strong>Herramientas Wireframing (Prototipado Simple):</strong> <span class="tool-name">Balsamiq, MockFlow</span> (enlazar pantallas).</li>
+                            <li><strong>Herramientas Pizarra Digital:</strong> <span class="tool-name">Miro, FigJam, Mural</span> (conectar marcos/secciones).</li>
+                            <li><strong>Herramientas Diseño UI/UX:</strong> <span class="tool-name">Figma, Sketch, Adobe XD (hist.)</span> (conectar pantallas/artboards). Eficiente baja/media fidelidad.</li>
+                        </ul>
+                    </article>
+
+                    <article id="proto-hifi">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Herramientas de Prototipado Interactivo y de Alta Fidelidad</h3>
+                        <p class="mb-4">Crear prototipos similares producto final (visual/interactivo). Pruebas usabilidad realistas, feedback detallado, presentación convincente.</p>
+                        <h4>Integradas Herramientas Diseño UI/UX:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Figma:</span> Robusto (transiciones, Smart Animate, componentes interactivos).</li>
+                            <li><span class="tool-name">Adobe XD (hist.):</span> Fuerte prototipado (voz, Auto-Animate). (Discontinuado).</li>
+                            <li><span class="tool-name">Sketch:</span> Capacidades nativas básicas. Depende plugins (<span class="tool-name">Anima</span>) o herramientas externas (<span class="tool-name">InVision, Framer, ProtoPie</span>).</li>
+                        </ul>
+                         <h4>Herramientas Dedicadas Prototipado Avanzado:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">ProtoPie:</span> Microinteracciones detalladas, alta fidelidad, integración sensores, multidispositivo.</li>
+                            <li><span class="tool-name">Axure RP:</span> Estándar prototipos complejos (lógica condicional, variables, datos dinámicos), documentación funcional.</li>
+                            <li><span class="tool-name">Framer:</span> Interacciones/animaciones realistas (React bajo capó). Difumina línea prototipo/producto. Construcción sitios web.</li>
+                            <li><span class="tool-name">Proto.io:</span> Basada web, alta fidelidad, amplia librería UI/interacciones/animaciones.</li>
+                            <li><span class="tool-name">InVision:</span> Pionero prototipado/colaboración. Plugin Craft. (Verificar estado actual).</li>
+                             <li><span class="tool-name">Marvel:</span> Diseño/prototipado no-code, interacciones visuales, código básico.</li>
+                             <li><span class="tool-name">Justinmind:</span> Planes gratuitos/pago, alta fidelidad drag-and-drop, bueno principiantes.</li>
+                             <li><span class="tool-name">Origami Studio (Meta):</span> Gratuita, interfaz "parches", interacciones complejas/nativas (móvil).</li>
+                             <li><span class="tool-name">Webflow:</span> Constructor web visual, excelente prototipar diseños web complejos (interacciones, responsive).</li>
+                             <li><span class="tool-name">Flinto / Flinto Lite:</span> Prototipos interactivos (móvil), animación/transición.</li>
+                             <li><span class="tool-name">Principle:</span> macOS, diseño interfaces animadas/interactivas, microinteracciones fluidas.</li>
+                             <li>Otras: <span class="tool-name">Composite, App Cooker, Demonstrate, Floid, Fluid UI, Frontify Workspace, Form, Fuse, Canvas Flip, Concept.ly</span>.</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Convergencia: herramientas UI/UX (Figma) más potentes prototipado. Dedicadas (ProtoPie, Axure, Framer, Origami) relevantes interacciones complejas, lógica, datos, fidelidad código.</p>
+                    </article>
+
+                    <article id="proto-micro">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Herramientas de Microinteracción y Animación</h3>
+                        <p class="mb-4">Diseño pequeñas animaciones/transiciones mejora usabilidad, feedback, guía atención, añade pulido.</p>
+                        <h4>Herramientas Dedicadas:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Principle:</span> Foco diseño animaciones/interacciones fluidas UI.</li>
+                            <li><span class="tool-name">Adobe After Effects:</span> Estándar industria motion graphics/animación avanzada. Curva aprendizaje. Usado crear animaciones UI complejas (implementadas vía Lottie).</li>
+                            <li><span class="tool-name">Lottie (librería) / Bodymovin (plugin AE):</span> Renderiza animaciones AE nativamente web/móvil (JSON ligero). Flujo esencial implementación eficiente.</li>
+                            <li><span class="tool-name">ProtoPie / Framer:</span> Capaces diseñar/simular microinteracciones detalladas.</li>
+                            <li><span class="tool-name">Easee:</span> Animación web para diseñadores.</li>
+                         </ul>
+                        <h4>Capacidades Herramientas UI/Prototipado:</h4>
+                        <p class="text-sm mb-4">Funciones como "Smart Animate" (Figma) / "Auto-Animate" (XD hist.) cubren necesidades animación básicas/intermedias.</p>
+                         <p class="text-xs italic mb-4">Animaciones estándar en herramientas UI/UX. Microinteracciones sofisticadas/complejas requieren software dedicado (After Effects, Principle) o prototipado alta gama (ProtoPie, Framer). Lottie puente crucial implementación.</p>
+                    </article>
+                </section>
+
+                 <section id="activos" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">V. Creación y Gestión de Activos</h2>
+                    <p class="mb-8">Generación/gestión activos visuales consistentes (iconos, tipografías, ilustraciones).</p>
+
+                    <article id="act-iconos">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Bibliotecas de Iconos, Creación y Gestión</h3>
+                        <p class="mb-4">Iconos cruciales comunicación visual/navegación. Conjuntos consistentes/gestionados vitales.</p>
+                        <h4>Bibliotecas Iconos Populares (Recursos):</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4 grid grid-cols-1 sm:grid-cols-2">
+                            <li><span class="tool-name">Font Awesome</span> (muy popular, kits CDN)</li>
+                            <li><span class="tool-name">Material Symbols</span> (Google, oficial MD3)</li>
+                            <li><span class="tool-name">Bootstrap Icons</span> (oficial Bootstrap)</li>
+                            <li><span class="tool-name">Lineicons</span> (extensa, formatos varios)</li>
+                            <li><span class="tool-name">Heroicons</span> (SVG alta calidad)</li>
+                            <li><span class="tool-name">Lucide</span> (open-source, comunidad)</li>
+                            <li><span class="tool-name">Streamline Icons</span> (muy grande, detalle)</li>
+                            <li><span class="tool-name">Uicons</span></li>
+                            <li><span class="tool-name">Iconify</span> (framework +100 librerías OS)</li>
+                            <li><span class="tool-name">Nucleo</span> (profesional, app gestión)</li>
+                            <li><span class="tool-name">Flaticon</span></li>
+                            <li><span class="tool-name">Iconfinder</span> (mercado profesional)</li>
+                            <li><span class="tool-name">Noun Project</span> (conceptos simples)</li>
+                            <li><span class="tool-name">Icons8</span> (edición online)</li>
+                            <li><span class="tool-name">Freepik</span></li>
+                            <li><span class="tool-name">SimpleIcons</span> (marcas/logos)</li>
+                            <li><span class="tool-name">Feather Icons</span> (OS, minimalista SVG)</li>
+                            <li><span class="tool-name">Iconsax</span> (grande, 6 estilos)</li>
+                            <li><span class="tool-name">Boxicons</span> (OS, simples/modernos)</li>
+                            <li><span class="tool-name">Tabler Icons</span> (OS, minimalista, grosor personalizable)</li>
+                            <li><span class="tool-name">IconMonstr</span> (gratuita, monocromáticos)</li>
+                             <li><span class="tool-name">Orion Icon Library</span> (gratis/pago, app web personalización)</li>
+                             <li><span class="tool-name">Untitled UI Icons</span> (Figma, respeta overrides)</li>
+                             <li><span class="tool-name">Pictogrammers (MDI)</span> (comunidad, expande Material)</li>
+                             <li>Otras: <span class="tool-name">Ionicons, Phosphor, Akar</span>...</li>
+                         </ul>
+                        <h4>Herramientas Creación Iconos:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Figma, Sketch, Illustrator, Affinity Designer</span> (dibujar personalizados).</p>
+                        <h4>Herramientas Gestión Iconos:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">IconJar:</span> Popular macOS organizar/buscar/usar bibliotecas descargadas.</li>
+                            <li><span class="tool-name">Nucleo App:</span> Gestionar/personalizar iconos Nucleo.</li>
+                            <li><span class="tool-name">Icon Shelf:</span> Centralizar iconos, copiar código.</li>
+                            <li><span class="tool-name">Icônes:</span> Explorador web (Iconify) buscar múltiples sets.</li>
+                            <li><span class="tool-name">Iconer:</span> Personalizar sets iconos OS populares.</li>
+                        </ul>
+                        <p class="text-xs italic mb-4">Elección biblioteca depende estilo, consistencia, tamaño, licencia, formato, integración. Agregadores (Iconify) simplifican. Gestión (IconJar) valiosa.</p>
+                    </article>
+
+                    <article id="act-fuentes">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Herramientas de Creación y Gestión de Fuentes</h3>
+                         <p class="mb-4">Tipografía fundamental. Selección/gestión fuentes existentes o creación personalizadas.</p>
+                        <h4>Herramientas Profesionales Creación Fuentes:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Glyphs:</span> Popular macOS, intuitiva/potente, plugins/scripts. Estándar industria.</li>
+                            <li><span class="tool-name">FontLab:</span> Avanzado/completo, tipógrafos profesionales (control total OpenType, métricas, hinting).</li>
+                            <li><span class="tool-name">Robofont:</span> Basado Python, personalizable/extensible.</li>
+                            <li><span class="tool-name">FontCreator:</span> Windows/macOS, intuitiva. Creación/modificación (variables, color), preserva OpenType.</li>
+                         </ul>
+                        <h4>Herramientas Nivel Entrada / Nicho:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">FontForge:</span> Gratuita, OS, potente, interfaz compleja principiantes.</li>
+                            <li><span class="tool-name">Birdfont:</span> Gratuita, OS, simplicidad, ideal principiantes/proyectos sencillos.</li>
+                            <li><span class="tool-name">Fontographer:</span> Simple, bueno aprender fundamentos.</li>
+                            <li><span class="tool-name">Fontself Maker:</span> Plugin Illustrator/Photoshop, convierte vectores/dibujos a fuentes OpenType.</li>
+                            <li><span class="tool-name">Calligraphr:</span> Online, transforma escritura manual/dibujos a fuentes.</li>
+                            <li><span class="tool-name">FontStruct:</span> Gratuita, web, cuadrícula, fuentes modulares/geométricas.</li>
+                        </ul>
+                         <h4>Herramientas Diseño Vectorial (Creación Glifos):</h4>
+                         <p class="text-sm mb-4"><span class="tool-name">Adobe Illustrator / Affinity Designer</span> (dibujar formas letras antes importar editor fuentes).</p>
+                         <h4>Herramientas Gestión Fuentes:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">FontBase:</span> Gestor gratuito (opción pago 'Awesome'), Mac/Win/Linux. Moderno, colecciones, activación auto (pago).</li>
+                             <li><span class="tool-name">Extensis Connect (Suitcase Fusion):</span> Profesional, equipos/empresas. Organización, colaboración, compartido, activación auto, cumplimiento licencias.</li>
+                             <li><span class="tool-name">RightFont / Typeface:</span> Populares macOS.</li>
+                             <li><span class="tool-name">Adobe Fonts (Typekit):</span> Suscripción, amplia biblioteca alta calidad, integración Adobe CC.</li>
+                         </ul>
+                         <h4>Fundiciones Tipografía (Recursos):</h4>
+                         <p class="text-sm mb-4">Empresas/diseñadores crean/venden fuentes (<span class="tool-name">Fontfabric, Google Fonts, MyFonts, Fontspring</span>...). Recurso principal adquirir fuentes existentes.</p>
+                          <p class="text-xs italic mb-4">Diseño profesional fuentes dominado por pocas herramientas (Glyphs, FontLab, Robofont). Opciones OS/simples (FontForge, Birdfont, Fontself) accesibles. Gestión eficaz crucial (FontBase, Extensis Connect) para organizar, activar/desactivar, cumplir licencias.</p>
+                    </article>
+
+                    <article id="act-imagenes">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Herramientas de Ilustración y Edición/Gestión de Imágenes</h3>
+                         <p class="mb-4">Productos requieren ilustraciones personalizadas, fotos editadas. Gestión organizada importante equipos.</p>
+                        <h4>Edición Vectorial (Ilustraciones):</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Adobe Illustrator, Affinity Designer</span> (principales). <span class="tool-name">Sketch, Figma</span> (capacidades robustas). <span class="tool-name">Inkscape</span> (OS).</p>
+                         <h4>Edición Raster (Fotos):</h4>
+                         <p class="text-sm mb-4"><span class="tool-name">Adobe Photoshop</span> (estándar). Alternativas: <span class="tool-name">Affinity Photo, GIMP</span> (OS), <span class="tool-name">Pixelmator Pro</span> (macOS).</p>
+                         <h4>Gestión Activos Digitales (DAM):</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Adobe Bridge:</span> Organización activos (incluido CC).</li>
+                             <li><span class="tool-name">Bynder:</span> DAM enfocado marketing, centraliza activos, guías marca.</li>
+                             <li><span class="tool-name">Frontify:</span> Combina DAM + docs sistemas diseño (edición activos, plugin Figma, integración Storybook).</li>
+                             <li><span class="tool-name">Lingo:</span> Biblioteca activos, integración Figma, docs básicas.</li>
+                             <li><span class="tool-name">Cloudinary / imgix:</span> Gestión/optimización/entrega imágenes/vídeos (más orientado dev web).</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Suites creativas (Adobe, Affinity) cubren mayoría necesidades. Equipos grandes/necesidad consistencia -> DAM (Bynder, Frontify) importantes organizar, versionar, compartir, controlar uso activos.</p>
+                    </article>
+                </section>
+
+                 <section id="validacion-optimizacion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">VI. Validación, Pruebas y Optimización</h2>
+                    <p class="mb-8">Validar diseños/prototipos con usuarios, asegurar accesibilidad, optimizar basado datos.</p>
+
+                    <article id="val-usabilidad">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Plataformas de Pruebas de Usabilidad (Revisión)</h3>
+                        <p class="mb-4">Evaluar usabilidad diseños/prototipos concretos. Identificar problemas interacción, fricción, confusión.</p>
+                        <h4>Plataformas Principales:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">UserTesting, Userlytics, Maze, Lookback, PlaybookUX, UserZoom (ahora UserTesting), Trymata, Userbrain, UserFeel, Lyssna (UsabilityHub)</span>...</p>
+                         <h4>Métodos Soportados:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li>Pruebas Moderadas vs. No Moderadas</li>
+                             <li>Pruebas Prototipos</li>
+                             <li>Pruebas Concepto</li>
+                             <li>Pruebas Cinco Segundos</li>
+                             <li>Pruebas Primer Clic</li>
+                             <li>Pruebas Preferencia</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Selección depende presupuesto, necesidad moderación, acceso paneles, tipos pruebas. IA creciente análisis/síntesis.</p>
+                    </article>
+
+                    <article id="val-accesibilidad">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Herramientas de Pruebas y Cumplimiento de Accesibilidad (WCAG, ADA)</h3>
+                         <p class="mb-4">Accesibilidad requisito fundamental (inclusión, cumplimiento legal). Identificar/corregir barreras.</p>
+                        <h4>Extensiones Navegador / Escáneres Automatizados:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">WAVE (WebAIM):</span> Popular, indicadores visuales errores/alertas.</li>
+                            <li><span class="tool-name">Axe DevTools (Deque):</span> Líder, motor axe-core, integra flujos dev/pruebas auto.</li>
+                            <li><span class="tool-name">Accessibility Insights (Microsoft):</span> FastPass problemas comunes + evaluación guiada WCAG 2.1 AA.</li>
+                            <li><span class="tool-name">Google Lighthouse:</span> Auditoría accesibilidad integrada Chrome DevTools.</li>
+                            <li><span class="tool-name">IBM Equal Access Accessibility Checker:</span> Exhaustividad.</li>
+                             <li>Otras: <span class="tool-name">Siteimprove, ARC Toolkit, Accessible Web Helper, Silktide, Total Validator, AAArdvark</span>.</li>
+                         </ul>
+                        <h4>Plataformas / Servicios Accesibilidad:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Level Access Platform:</span> Integral (escaneo auto, pruebas manuales, formación, remediación, PDF checker).</li>
+                             <li><span class="tool-name">accessiBe:</span> IA detección/remediación auto, certificación.</li>
+                             <li><span class="tool-name">AudioEye:</span> Automatización + IA asistida humanos. Verificadores gratis.</li>
+                             <li><span class="tool-name">UserWay:</span> Solución IA.</li>
+                             <li>Otras: <span class="tool-name">Siteimprove, Monsido, UsableNet AQA, Compliance Sheriff, EqualWeb, TPGI ARC, Testfabrik Webmate, WCAG.com Checker, AccessibilityChecker.org</span>.</li>
+                         </ul>
+                        <h4>Herramientas Específicas:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><strong>Lectores Pantalla:</strong> <span class="tool-name">JAWS</span> (Win, pago), <span class="tool-name">NVDA</span> (Win, gratis OS), <span class="tool-name">VoiceOver</span> (macOS/iOS). Fundamental probar real.</li>
+                             <li><strong>Verificadores Contraste Color:</strong> <span class="tool-name">Color Contrast Analyzer (CCA), WebAIM Contrast Checker</span>, plugins Figma/Sketch (<span class="tool-name">Stark</span>).</li>
+                             <li><strong>Herramientas Móviles:</strong> <span class="tool-name">Accessibility Inspector</span> (Apple), <span class="tool-name">Accessibility Scanner</span> (Google).</li>
+                             <li>Otras: <span class="tool-name">CKSource Accessibility Checker, Pally, HTML CodeSniffer, TAW, Sally</span>, herramientas OS.</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Enfoque combinado: herramientas auto detectan problemas técnicos comunes, pero insuficientes. Pruebas manuales (expertos, usuarios reales discapacidad) indispensables conformidad/usabilidad real. IA mejora detección/remediación auto, supervisión humana crítica.</p>
+                    </article>
+
+                    <article id="val-ab">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Plataformas de Pruebas A/B y Experimentación de Diseño</h3>
+                         <p class="mb-4">Experimentar variaciones diseño con usuarios reales producción. Optimizar interfaz para métricas específicas (conversión, clics) basado datos.</p>
+                        <h4>Plataformas Populares:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Optimizely:</span> Nivel empresarial, experimentación/personalización web/móvil.</li>
+                             <li><span class="tool-name">VWO (Visual Website Optimizer):</span> Completa pruebas A/B, análisis comportamiento, CRO.</li>
+                             <li><span class="tool-name">Google Optimize:</span> (Retirado Sep 2023). Gratuita, integración GA.</li>
+                             <li><span class="tool-name">Launch Darkly / Split.io:</span> Gestión feature flags, lanzamientos controlados, pruebas A/B (enfoque técnico).</li>
+                             <li><span class="tool-name">Adobe Target:</span> Parte Experience Cloud, personalización/pruebas A/B escala.</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Establecen vínculo cuantificable diseño-resultados negocio. Validan hipótesis comparando rendimiento variantes vs. original (métricas clave). Requiere colaboración diseño/producto/dev/marketing.</p>
+                    </article>
+
+                    <div class="table-container mt-6">
+                        <h4 class="text-xl font-semibold text-gray-700 mb-3">Tabla Resumen: Herramientas Validación y Pruebas</h4>
+                        <table>
+                            <thead>
+                                <tr><th>Herramienta</th><th>Categoría</th><th>Característica Clave / Enfoque</th><th>Método Prueba</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>UserTesting / Userlytics</td><td>Pruebas Usabilidad</td><td>Plataformas completas, paneles, análisis IA</td><td>Moderado / No Moderado</td></tr>
+                                <tr><td>Maze</td><td>Pruebas Usabilidad</td><td>Pruebas no-mod, integración diseño, informes</td><td>No Moderado</td></tr>
+                                <tr><td>Lookback</td><td>Pruebas Usabilidad</td><td>Observación real-time, colaboración</td><td>Moderado / No Moderado</td></tr>
+                                <tr><td>WAVE / Axe DevTools</td><td>Verificador Accesibilidad</td><td>Extensiones navegador, detección rápida errores</td><td>Automatizado</td></tr>
+                                <tr><td>Accessibility Insights</td><td>Verificador Accesibilidad</td><td>FastPass y evaluación completa WCAG</td><td>Automatizado / Guiado Manual</td></tr>
+                                <tr><td>Level Access / accessiBe</td><td>Plataforma Accesibilidad</td><td>Soluciones integrales (auto+manual+IA+servicios)</td><td>Automatizado / Manual / IA</td></tr>
+                                <tr><td>JAWS/NVDA/VoiceOver</td><td>Lector Pantalla</td><td>Simulación experiencia usuario discapacidad visual</td><td>Manual (Tec. Asistencial)</td></tr>
+                                <tr><td>CCA / WebAIM Contrast</td><td>Verificador Contraste</td><td>Comprobación ratios contraste color WCAG</td><td>Específico (Manual/Auto)</td></tr>
+                                <tr><td>Optimizely / VWO</td><td>Pruebas A/B</td><td>Experimentación en vivo, optimización conversiones</td><td>Experimentación en vivo</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                 <section id="handoff-docs" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">VII. Handoff, Documentación y Sistematización</h2>
+                    <p class="mb-8">Transición fluida diseño-desarrollo, documentación clara, sistemas diseño para coherencia/eficiencia.</p>
+
+                     <article id="hand-specs">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Herramientas de Handoff y Especificación de Diseño</h3>
+                        <p class="mb-4">Entregar diseños finalizados a desarrolladores. Facilitan transición (especificaciones precisas, exportación activos, código inicial).</p>
+                        <h4>Funcionalidad Integrada Herramientas Diseño:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Figma (Dev Mode):</span> Modo específico devs (inspección, medidas, activos, código CSS/Swift/XML). Integra VS Code, Jira, Storybook. Solución handoff principal ecosistema Figma.</li>
+                            <li><span class="tool-name">Sketch:</span> Depende Cloud Inspect o herramientas 3ros (<span class="tool-name">Zeplin</span>).</li>
+                            <li><span class="tool-name">Adobe XD (Share for Dev - hist.):</span> Ofrecía inspección, specs, exportación. (Discontinuado).</li>
+                            <li><span class="tool-name">Axure RP:</span> Genera docs HTML interactiva (specs + prototipo).</li>
+                         </ul>
+                        <h4>Herramientas Dedicadas Handoff:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Zeplin:</span> Más popular/consolidada. Integra Figma/Sketch/XD/PS. Entorno específico devs (inspección, activos, código varios lenguajes, guías estilo, versiones, flujos). Integra Jira, Slack, Storybook. Estructurada/robusta equipos grandes/complejos.</li>
+                             <li><span class="tool-name">Avocode:</span> Soporta múltiples formatos diseño. Inspección capas, exportación activos/código. Funciones revisión diseño.</li>
+                             <li><span class="tool-name">Sympli:</span> Control versiones + handoff. Integra diseño/dev.</li>
+                             <li><span class="tool-name">Marvel:</span> Features handoff, código inicial/CSS.</li>
+                             <li><span class="tool-name">InVision (Inspect - hist.):</span> Ofrecía función Inspect. (Verificar estado).</li>
+                             <li><span class="tool-name">Spectrr:</span> Especificación diseño, anotaciones auto, CSS completo.</li>
+                             <li><span class="tool-name">Anima App:</span> Foco diseño-a-código. Genera código funcional (React, Vue, HTML). 'Frontier' conecta sistemas diseño-código real.</li>
+                             <li><span class="tool-name">Motiff:</span> Incluye 'Develop Mode' (soporte protocolos IA codificación).</li>
+                         </ul>
+                         <p class="text-xs italic mb-4">Tensión soluciones integradas (Figma Dev Mode) vs. dedicadas (Zeplin). Figma busca conveniencia. Zeplin argumenta mejor estructura/control/separación roles equipos grandes. Herramientas diseño-a-código (Anima) buscan automatizar más.</p>
+                    </article>
+
+                    <article id="hand-ds">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Plataformas de Gestión y Documentación de Sistemas de Diseño</h3>
+                         <p class="mb-4">Sistema diseño: colección componentes reutilizables, patrones, guías. "Fuente única verdad" coherencia/eficiencia/escalabilidad. Documentar/gestionar crucial adopción/mantenimiento.</p>
+                        <h4>Herramientas Dedicadas Documentación:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Zeroheight:</span> Popular crear sitios docs sistemas diseño. Integra diseño (Figma/Sketch/XD) y dev (Storybook/código). Muestra componentes diseño + docs técnica + código.</li>
+                             <li><span class="tool-name">Storybook:</span> Herramienta OS desarrollar/probar componentes UI aislamiento. Estándar facto documentar bibliotecas componentes (código), ejemplos interactivos. Integra/enlaza desde plataformas docs (Zeroheight).</li>
+                             <li><span class="tool-name">Frontify:</span> Combina DAM + docs marca/sistemas diseño. Muestra snippets código, integra Storybook.</li>
+                             <li><span class="tool-name">Knapsack:</span> Plataforma integral sistemas diseño. Conecta diseño-experiencias desarrolladas. Gestión tokens, docs patrones, versionado (Git), feedback.</li>
+                             <li><span class="tool-name">Specify:</span> Foco gestión/distribución auto tokens diseño/activos (diseño -> código).</li>
+                             <li><span class="tool-name">Supernova:</span> Énfasis automatización, gestión tokens, exportación código multi-plataforma.</li>
+                             <li><span class="tool-name">Backlight:</span> Construir, documentar, colaborar sistemas diseño directo con código.</li>
+                             <li><span class="tool-name">Lingo:</span> Biblioteca activos, opciones docs básicas.</li>
+                             <li><span class="tool-name">InVision DSM:</span> Gestor sistemas diseño InVision. Sincroniza Sketch/Figma, previsualiza historias Storybook.</li>
+                             <li><span class="tool-name">Brand.ai / Styleguide:</span> (Verificar actualidad).</li>
+                         </ul>
+                        <h4>Soluciones Flexibles / Genéricas:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                             <li><span class="tool-name">Notion:</span> Flexibilidad crear sitios docs personalizados. Integra Figma, CodePen. Requiere más esfuerzo configuración.</li>
+                             <li><span class="tool-name">Confluence:</span> Muy usada entornos corporativos (Atlassian). Puede adaptarse, pero bloques no optimizados, integración Figma limitada.</li>
+                             <li><span class="tool-name">GitBook:</span> Simple crear docs, buena integración GitHub. Opciones diseño limitadas.</li>
+                             <li><span class="tool-name">GitHub Pages / GitLab Pages:</span> Alojar sitios estáticos desde Git. Combinado generadores sitios (Gatsby, Jekyll) para construir docs (común OS/equipos técnicos).</li>
+                         </ul>
+                        <h4>Soluciones Personalizadas:</h4>
+                        <p class="text-sm mb-4">Construir sitio docs medida (frameworks web, APIs diseño). Máxima flexibilidad, esfuerzo dev significativo. Necesaria requisitos seguridad estrictos (bancos).</p>
+                         <p class="text-xs italic mb-4">Desafío central: sincronizar "fuentes verdad" (biblioteca diseño vs. implementación código). Herramientas dedicadas (Zeroheight) integran bien. Storybook fundamental parte código. Flexibles (Notion) requieren más esfuerzo.</p>
+                    </article>
+
+                    <article id="hand-version">
+                         <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Control de Versiones y Colaboración (Enfoque en Desarrollo)</h3>
+                         <p class="mb-4">Sistema diseño maduro implica gestionar código componentes reutilizables. Requiere herramientas/procesos alineados dev software.</p>
+                        <h4>Plataformas Control Versiones:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Git (GitHub, GitLab, Bitbucket):</span> Estándar absoluto control versiones código fuente. Esencial gestionar evolución código componentes sistema diseño, colaboración devs, historial cambios. Integra herramientas docs.</p>
+                        <h4>Herramientas Colaboración Código:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Storybook:</span> Facilita revisión componentes código aislamiento (diseñadores/devs).</li>
+                            <li><span class="tool-name">VS Code Live Share:</span> Edición colaborativa código real-time.</li>
+                         </ul>
+                        <h4>Herramientas Diseño Enfoque Código:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">UXPin, Framer, Penpot</span> (intentan cerrar brecha usando código en proceso diseño).</p>
+                        <p class="text-xs italic mb-4">Sistema diseño eficaz requiere colaboración/versionado abarque componentes código (Git). Herramientas integran/interactúan código facilitan colaboración profunda diseño-desarrollo.</p>
+
+                        <div class="table-container mt-6">
+                            <h4 class="text-xl font-semibold text-gray-700 mb-3">Tabla Resumen: Herramientas Handoff, Documentación y Sistemas Diseño</h4>
+                            <table>
+                                <thead>
+                                    <tr><th>Herramienta</th><th>Categoría</th><th>Integración Clave</th><th>Usuario Principal</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Figma (Dev Mode)</td><td>Handoff</td><td>Figma (Nativo), VS Code, Jira</td><td>Desarrollador</td></tr>
+                                    <tr><td>Zeplin</td><td>Handoff</td><td>Figma, Sketch, XD, Storybook, Jira</td><td>Desarrollador</td></tr>
+                                    <tr><td>Anima App</td><td>Handoff (Diseño a Código)</td><td>Figma, Sketch, XD</td><td>Diseñador/Dev</td></tr>
+                                    <tr><td>Zeroheight</td><td>Documentación Sistema Diseño</td><td>Figma, Sketch, XD, Storybook</td><td>Ambos</td></tr>
+                                    <tr><td>Storybook</td><td>Desarrollo/Docs Componentes</td><td>Frameworks JS (React, Vue, etc.)</td><td>Desarrollador</td></tr>
+                                    <tr><td>Frontify</td><td>Documentación Sistema Diseño</td><td>Figma, Storybook (DAM también)</td><td>Ambos</td></tr>
+                                    <tr><td>Knapsack</td><td>Plataforma Sistema Diseño</td><td>Figma, XD, Git</td><td>Ambos</td></tr>
+                                    <tr><td>Notion</td><td>Documentación Sistema Diseño</td><td>Figma, CodePen (Flexible)</td><td>Ambos</td></tr>
+                                    <tr><td>Git (GitHub/Lab)</td><td>Control Versiones (Código)</td><td>Código fuente</td><td>Desarrollador</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+
+                 <section id="medicion-integracion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">VIII. Medición del Impacto e Integración Empresarial</h2>
+                    <p class="mb-8">Medir uso producto mundo real, recoger feedback continuo, conectar resultados diseño con objetivos negocio.</p>
+
+                    <article id="med-analitica">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">A. Analítica de Producto y Seguimiento Comportamiento (Post-lanzamiento)</h3>
+                        <p class="mb-4">Entender cómo usuarios interactúan producto (qué usan, dónde problemas, tiempo, regreso). Datos vitales informar iteraciones.</p>
+                        <h4>Plataformas Analítica Producto:</h4>
+                        <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Amplitude, Mixpanel, Heap:</span> Especializadas analítica basada eventos (seguir eventos, funnels, cohortes, retención).</li>
+                            <li><span class="tool-name">Pendo:</span> Combina analítica + feedback in-app + guías usuario.</li>
+                            <li><span class="tool-name">Google Analytics:</span> Extendida analítica web (tráfico, adquisición, comportamiento general). GA4 más orientado eventos.</li>
+                        </ul>
+                         <h4>Herramientas Grabación Sesiones / Mapas Calor:</h4>
+                         <p class="text-sm mb-4"><span class="tool-name">Hotjar, Crazy Egg, LogRocket, FullStory, Microsoft Clarity:</span> Visualizar sesiones anónimas (clics, scroll, errores). Mapas calor agregan datos atención/interacción. Contexto cualitativo a datos cuantitativos.</p>
+                         <h4>Herramientas Monitoreo Backend:</h4>
+                         <p class="text-sm mb-4"><span class="tool-name">Datadog:</span> Principalmente monitoreo infraestructura/rendimiento (ingeniería). Útil info problemas técnicos impactan UX.</p>
+                          <p class="text-xs italic mb-4">Analítica post-lanzamiento cierra ciclo. Observar impacto real decisiones diseño comportamiento. Métricas (adopción features, tiempo tarea, tasa éxito, retención, churn, DAU/WAU/MAU) visión cuantitativa si diseño logra objetivos. Fundamental identificar qué funciona/no, enfocar mejoras.</p>
+                    </article>
+
+                    <article id="med-bi">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">B. Paneles de Inteligencia Empresarial (BI) y KPIs</h3>
+                         <p class="mb-4">Comunicar valor diseño, alinear esfuerzos estrategia. Visualizar KPIs relevantes (UX + negocio) paneles compartidos.</p>
+                        <h4>Plataformas BI / Dashboards:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li><span class="tool-name">Geckoboard:</span> Dashboards real-time, interfaz simple drag-and-drop. Integra fuentes comunes (GA, Salesforce).</li>
+                            <li><span class="tool-name">Grow:</span> Integra datos múltiples fuentes, dashboards/reportes personalizados.</li>
+                            <li><span class="tool-name">Tableau / Power BI / Looker (Google Cloud):</span> Principales plataformas BI, capacidades avanzadas visualización/análisis/exploración datos.</li>
+                            <li><span class="tool-name">SimpleKPI:</span> Sencilla/fácil usar seguimiento KPIs diversas áreas.</li>
+                            <li><span class="tool-name">Scoro:</span> Combina gestión proyectos + monitorización KPIs real-time.</li>
+                            <li><span class="tool-name">Olation:</span> Organizar/conectar datos diferentes sistemas empresariales.</li>
+                         </ul>
+                        <h4>Herramientas Seguimiento OKRs:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Tability, Google Sheets, Lattice, Ally.io (Microsoft):</span> Definir/seguir OKRs. Conectar KPIs específicos (diseño) a resultados clave miden progreso objetivos estratégicos.</p>
+                         <p class="text-xs italic mb-4">Conexión explícita métricas UX (SUS, Tasa Éxito, CSAT, NPS) y KPIs negocio (Conversión, ARPU, CLTV, Churn) fundamental. Presentar juntas dashboards (herramientas BI) demuestra contribución mejoras UX a resultados financieros/estratégicos. OKRs formalizan alineación.</p>
+                    </article>
+
+                    <article id="med-feedback">
+                        <h3 class="text-2xl font-semibold text-gray-700 mb-4">C. Herramientas de Feedback del Cliente y Análisis de Sentimiento</h3>
+                        <p class="mb-4">Recopilar feedback cualitativo directo post-lanzamiento. Entender satisfacción, percepciones, frustraciones, sugerencias.</p>
+                        <h4>Herramientas Encuestas / Feedback:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Qualaroo, UserTesting, Pendo, Hotjar, Usabilla, SurveyMonkey:</span> Usadas post-lanzamiento desplegar encuestas satisfacción (CSAT), NPS, CES, recoger comentarios abiertos.</p>
+                        <h4>Plataformas Gestión Feedback:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Canny, UserVoice, Productboard:</span> Especializadas centralizar, organizar, priorizar feedback usuarios / solicitudes features. Integran gestión proyectos (Jira).</p>
+                        <h4>Herramientas Análisis Sentimiento:</h4>
+                         <ul class="list-disc list-inside space-y-1 pl-4 text-sm mb-4">
+                            <li>Procesan texto (reseñas, comentarios) identificar tono emocional (positivo/negativo/neutro), temas recurrentes.</li>
+                            <li>Funcionalidades integradas (análisis IA <span class="tool-name">Qualaroo</span>, <span class="tool-name">UserTesting</span>).</li>
+                            <li><span class="tool-name">Dovetail:</span> Repositorio investigación, capacidades IA analizar/resumir datos cualitativos.</li>
+                         </ul>
+                        <h4>Herramientas Monitoreo Social/Marca:</h4>
+                        <p class="text-sm mb-4"><span class="tool-name">Brandwatch, Mention:</span> Capturar menciones/discusiones públicas producto/marca (redes sociales, foros). Visión sentimiento público.</p>
+                         <p class="text-xs italic mb-4">Recopilación datos actitudinales (CSAT, NPS, CES, feedback cualitativo) proporciona "por qué" detrás "qué" analítica comportamiento. Ayuda entender satisfacción/lealtad, identificar razones problemas/éxitos. IA valiosa procesar/sintetizar feedback cualitativo.</p>
+                    </article>
+                </section>
+
+                 <section id="conclusion" class="mb-16">
+                    <h2 class="text-3xl font-bold text-cyan-800 mb-6 border-b-2 border-cyan-200 pb-2">Conclusión</h2>
+                    <ul class="list-disc list-inside space-y-2 pl-4 text-sm">
+                        <li><strong>Recapitulación:</strong> Ecosistema herramientas amplio/diverso, cubre todo ciclo vida (investigación -> medición impacto).</li>
+                        <li><strong>Temas Clave:</strong> Tensión especialización vs. consolidación. IA irrumpe (generación UI, análisis). Mejora colaboración diseño-dev (handoff, sistemas diseño) foco central. Accesibilidad requisito. Énfasis conectar diseño-métricas negocio.</li>
+                        <li><strong>Guía Selección:</strong> No conjunto único "correcto". Selección óptima depende contexto (tamaño equipo, presupuesto, complejidad producto, ecosistema técnico, necesidades particulares, flujos trabajo). Experimentación activa recomendable.</li>
+                        <li><strong>Perspectivas Futuras:</strong> IA profundizará (asistencia diseño, optimización auto, análisis predictivo). Búsqueda fluidez diseño-código impulsará herramientas generen código robusto / colaboración componentes codificados. Colaboración mejorará (remoto, multidisciplinar). Necesidad medir/demostrar impacto negocio impulsará integración diseño/analítica/BI. Diseñador futuro tendrá herramientas potentes/inteligentes, capacidad elegir/orquestar seguirá siendo habilidad fundamental.</li>
+                    </ul>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- Mobile Menu Logic ---
+        const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const sidebar = document.getElementById('sidebar');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const navLinksContainer = document.getElementById('nav-links');
+        const mainContent = document.querySelector('main');
+
+        function openMenu() {
+            if (!sidebar || !menuOverlay) return;
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('translate-x-0');
+            menuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (mainContent) mainContent.style.filter = 'blur(4px)';
+        }
+
+        function closeMenu() {
+             if (!sidebar || !menuOverlay) return;
+            sidebar.classList.remove('translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            menuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+            if (mainContent) mainContent.style.filter = '';
+        }
+
+        if (menuButton) menuButton.addEventListener('click', openMenu);
+        if (closeMenuButton) closeMenuButton.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        if (navLinksContainer) {
+            navLinksContainer.addEventListener('click', (event) => {
+                 const link = event.target.closest('a');
+                if (link && link.closest('#nav-links')) {
+                    if (window.innerWidth < 1024) {
+                        setTimeout(closeMenu, 50);
+                    }
+                     const targetId = link.getAttribute('href').substring(1);
+                     const targetElement = document.getElementById(targetId);
+                     if (targetElement) {
+                        const headerOffset = (document.querySelector('header.lg\\:hidden')?.offsetHeight || 64) + 16; // Adjusted offset
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                        event.preventDefault();
+                     }
+                }
+            });
+        }
+
+        // --- Active Link Highlighting Logic ---
+        const sections = document.querySelectorAll('main section[id], main article[id]'); // Target sections and articles with IDs
+        const navLinks = document.querySelectorAll('.sidebar-link');
+        const scrollOffsetHighlight = (document.querySelector('header.lg\\:hidden')?.offsetHeight || 64) + 80; // Increased offset slightly more
+
+        function changeActiveLink() {
+            let currentElementId = '';
+            const scrollPosition = window.scrollY + scrollOffsetHighlight;
+
+            sections.forEach( element => {
+                if (element && typeof element.offsetTop !== 'undefined') {
+                    // Ensure the element is somewhat visible in the viewport
+                    const elementTop = element.offsetTop;
+                    const elementBottom = elementTop + element.offsetHeight;
+                     // Check if the top of the element is above the scroll trigger point
+                    if (scrollPosition >= elementTop && scrollPosition < elementBottom + 200) { // Added buffer to keep highlight longer
+                         currentElementId = element.getAttribute('id');
+                     }
+                }
+            });
+
+             // If scrolled past the last section, keep the last one active
+             const lastSection = sections[sections.length - 1];
+             if (lastSection && window.scrollY + window.innerHeight >= lastSection.offsetTop + lastSection.offsetHeight) {
+                 currentElementId = lastSection.getAttribute('id');
+             }
+              // If near the top, activate the first link
+             if (window.scrollY < 200 && sections.length > 0) {
+                 currentElementId = sections[0].getAttribute('id');
+             }
+
+
+            navLinks.forEach( link => {
+                link.classList.remove('active');
+                const linkHref = link.getAttribute('href');
+                if (linkHref && linkHref === `#${currentElementId}`) {
+                    link.classList.add('active');
+                }
+                 // Highlight parent link if a sub-link is active
+                 if (link.classList.contains('active') && link.closest('ul ul')) {
+                     const parentLi = link.closest('ul ul').closest('li');
+                     if (parentLi) {
+                         const parentLink = parentLi.querySelector('a.sidebar-link');
+                         if (parentLink && !parentLink.classList.contains('active')) {
+                            parentLink.classList.add('active');
+                         }
+                     }
+                 }
+            });
+        }
+
+        if (sections.length > 0 && navLinks.length > 0) {
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) {
+                    window.cancelAnimationFrame(scrollTimeout);
+                }
+                scrollTimeout = window.requestAnimationFrame(changeActiveLink);
+            }, { passive: true });
+            // Debounce initial call slightly to allow layout shifts
+            setTimeout(changeActiveLink, 100);
+        }
+
+    </script>
+
+</body>
+</html>
